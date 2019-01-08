@@ -21,7 +21,7 @@ const beer = [{
     ABV: 5.1,
     packSize: 1
 },{
-    title: 'Allagash Map 40 - 12oz Bottle',
+    name: 'Allagash Map 40 - 12oz Bottle',
     brand: 'Allagash Brewing Company',
     description: 'Our interpretation of a traditional Belgian wheat beer. Brewed with a generous portion of wheat and spiced with coriander and Curacao orange peel, this beer is fruity, refreshing and slightly cloudy in appearance.',
     inventory: 30,
@@ -31,7 +31,7 @@ const beer = [{
     ABV: 7.5,
     packSize: 1
 },{
-    title: 'Gnomegang - 12oz Bottle',
+    name: 'Gnomegang - 12oz Bottle',
     brand: 'Allagash Brewing Company',
     description: 'This delectable blonde ale is a co-creation of two famed farmstead breweries: Brewery Ommegang and Brasserie d’Achouffe. It employs five fine malts, two noble hops, and both of the distinctive Chouffe and Ommegang yeasts. You’ll enjoy the smooth drinkability, fruity aromas and flavors, and warming finish',
     inventory: 30,
@@ -41,7 +41,7 @@ const beer = [{
     ABV: 7.5,
     packSize: 1
 },{
-    title: 'Ommegang Game of Thrones Winter is Here',
+    name: 'Ommegang Game of Thrones Winter is Here',
     brand: 'Brewery Ommegang',
     description: 'Winter Is Here is a Belgian-style double white ale. Fittingly for a double white (walker) ale, the label is graced by the ominous visage of the Night King, who is expected to arrive as forcefully in Season 7 as this beer ABV will arrive in your stomach.',
     inventory: 30,
@@ -51,7 +51,7 @@ const beer = [{
     ABV: 8.3,
     packSize: 1
 },{
-    title: 'Ommegang Three Philosophers',
+    name: 'Ommegang Three Philosophers',
     brand: 'Brewery Ommegang',
     description: 'A deep burgundian brew bursting with sweet malt and dark cherry. The perfect marriage of flavor is achieved by blending Lindemans Kriek, a delicious cherry lambic from Belgium, with our rich Belgian-style ale. Crafted with wisdom and patience, this brew will help you unlock the secrets of the universe.',
     inventory: 30,
@@ -61,7 +61,7 @@ const beer = [{
     ABV: 9.7,
     packSize: 1
 },{
-    title: 'Dogfish Head 120 Minute IPA',
+    name: 'Dogfish Head 120 Minute IPA',
     brand: 'Dogfish Head Craft Brewed Ales',
     description: 'Too extreme to be called beer? Brewed to a colossal 45°P, boiled for a full 2 hours while being continually hopped with high alpha American hops, dry-hopped every day in the fermenter for a month, and aged for a month on whole leaf hops, 120 Minute IPA is by far the strongest IPA ever brewed.',
     inventory: 30,
@@ -71,7 +71,7 @@ const beer = [{
     ABV: 16.5,
     packSize: 1
 },{
-    title: 'Founders Breakfast Stout',
+    name: 'Founders Breakfast Stout',
     brand: 'Founders Brewing Co.',
     description: 'You’ve got to love coffee to truly appreciate this phenomenal brew. Brewed with an abundance of flaked oats, bitter and sweetened imported chocolates, Sumatra and Kona coffee. We’re actually not sure if this is some type of coffee cake or a beer. Either way you can drink this ale with a fork. Breakfast Stout has an intense fresh roasted coffee nose toped with a cinnamon colored frothy head that seems to never fade and makes you wish breakfast could last forever.',
     inventory: 30,
