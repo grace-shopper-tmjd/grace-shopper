@@ -26,7 +26,50 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  address:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  city:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  state:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  zipcode:{
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  role:{
+    type: Sequelize.ENUM('isAdmin', 'notAdmin'),
+    defaultValue: 'notAdmin'
+  },
+  phone: {
+    type:Sequelize.INTEGER
+  },
+  billingAdd:{
+    type:SEQUELIZE.TEXT,
+    allowNull: false
+  },
+  billingCity:{
+    type: SEQUELIZE.TEXT,
+    allowNull: false
+  },
+  billingZip:{
+    type: SEQUELIZE.INTEGER,
+    allowNull: false
+  },
+  ship:{
+    type: SEQUELIZE.BOOLEAN,
+    defaultValue: false
   }
+  
+
+
+
 })
 
 module.exports = User
