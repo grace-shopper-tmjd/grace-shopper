@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const Sequelize = require('sequelize');
-const db = require('./_db');
+const Sequelize = require('sequelize')
+const db = require('../db')
 
 const Order = db.define('order', {
   orderNumber: {
@@ -25,7 +25,6 @@ const Order = db.define('order', {
     type: Sequelize.INTEGER,
     allowNull: false
   }
-});
+})
 
-
-module.exports = Order;
+module.exports = Order

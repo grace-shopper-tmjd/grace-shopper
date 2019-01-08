@@ -16,16 +16,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-
-router.get('/:id', async (req, res, next) {
+router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
         id: req.params.id
       }
-    });
-    res.send(user);
-  } catch(err) {
+    })
+    res.send(user)
+  } catch (err) {
     next(err)
   }
 })
