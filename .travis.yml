@@ -24,4 +24,4 @@ deploy:
   provider: heroku
   app: topshops # see README
   api_key:
-    secure: BXNIOtRGdng7JKg5vJ0A3iLf8Ij//Ewxv4oKR02PY+Ioxn04wD4MbH/LkjFIQmd+WbCrf6S/L+1NJP4QlB1zHkRpV3vliNb5K5Z+3dbiQ8CHojky9E9jEQN0t8mexkfsqI3vC+2zF/cahYZXzBQnlMxkwaRUfjmOZNSVlE5d1GinZQFcpgth5iNTzyj6oLJTF0pSzAhPPW8KQmhEHOHLhoSvsenSeoFK+8HMqNBi8NMLcIcjmW9SDJdBM3j+mf6W/R0cQFcmQWFspR7aQRLS90PcUKF2xVq+4T3lPa3JXQqUablRi+FobXVlbriwFMtuOIwRK+LEgoAxFb5FBI+zPrWSdfwO7/1O6moF+TjFFs7M/yUy1mFN+neB7tkOvuL1eavlQZGLhKDlvpdGBxarHfy80Lddrs937bQiGIOWJInFcy9yE7riwrVxadJV8d2SI5zZgN26bNc6kP8xLzMgFFUHA85oI5hM3qOwKZqEbfSfbsTT16A7ZeZcfYRpuFct4SuEP0CLWlBrGkPn1HvU465txxqrBN1AhajbmsVZdrBLSdDHpv9+B4ipc1ufRY1tWUifstI+TGYFD/M04DumOnia2QkhcWBVXHBh4ADsD63FvKBB54qDa12if8iwYjPVT6KbJp6qnA5CKSCuYU1ydta/RgvRxL4AcKCQ6aYy98I= # see README
+    secure: 7f7f6ecd-382c-41e0-ac2d-7b8b7baa73fc # see README
