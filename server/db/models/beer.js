@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const db = require('./_db');
 
 const Beer = db.define('beer', {
-   title: {
+   name: {
        type: Sequelize.STRING,
        allowNull: false
     },
@@ -16,8 +16,13 @@ const Beer = db.define('beer', {
         type: SEQUELIZE.TEXT,
         allowNull: false
     },
+    inventory:{
+        type: SEQUELIZE.INTEGER,
+        allowNull: false
+    },
     imageUrl:{
         type: Sequelize.STRING,
+        defaultValue: 'https://cdn1.wine-searcher.net/images/labels/89/86/stillwater-artisanal-extra-dry-sake-saison-beer-maryland-usa-10928986.jpg'
     },
     type:{
         type: Sequelize.STRING,
