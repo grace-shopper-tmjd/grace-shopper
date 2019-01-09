@@ -22,6 +22,9 @@ const Beer = db.define('beer', {
   },
   imageUrl: {
     type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    },
     defaultValue:
       'https://cdn1.wine-searcher.net/images/labels/89/86/stillwater-artisanal-extra-dry-sake-saison-beer-maryland-usa-10928986.jpg'
   },
@@ -34,7 +37,7 @@ const Beer = db.define('beer', {
     allowNull: false
   },
   ABV: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false
   },
   packSize: {
