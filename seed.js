@@ -84,7 +84,86 @@ const beer = [{
 
 ];
 
-
+user = [{
+    email: 'Camille@yahoo.com',
+    password: 'jar',
+    salt: 'awoiejirg',
+    googleId: '31451352',
+    address: '24 Gofish Lane',
+    city: 'Kalamazoo',
+    state: 'Michigan',
+    zipcode: '49001',
+    role: 'notAdmin',
+    phone: 1234729573,
+    billingAdd: '24 Gofish Lane',
+    billingCity: 'Kalamazoo',
+    billingZip: '49001',
+    ship: false
+}, 
+{
+    email: 'Loretta@yahoo.com',
+    password: 'apple',
+    salt: 'aeugaewkfhuk',
+    googleId: '84826465',
+    address: '22 Seuss St',
+    city: 'Pacoima',
+    state: 'California',
+    zipcode: '91331',
+    role: 'notAdmin',
+    phone: 7361948362,
+    billingAdd: '173 Donkey Atreet',
+    billingCity: 'Pacoima',
+    billingZip: '91331',
+    ship: true
+},
+{
+    email: 'Rufus@aol.com',
+    password: 'snickerdoodle',
+    salt: 'uewhaewufhaewkfh',
+    googleId: '83619485',
+    address: '49 Dumb Street',
+    city: 'Los Angeles',
+    state: 'California',
+    zipcode: '90210',
+    role: 'Admin',
+    phone: 8461956351,
+    billingAdd: '389 Stupid Lane',
+    billingCity: 'Los Angeles',
+    billingZip: '90210',
+    ship: true
+},
+{
+    email: 'Philip@aol.com',
+    password: 'kumquat',
+    salt: 'oeofqhefoih',
+    googleId: '56381642',
+    address: '46 Boring Lane',
+    city: 'Los Angeles',
+    state: 'California',
+    zipcode: '90210',
+    role: 'Admin',
+    phone: 5628561826,
+    billingAdd: '46 Boring Lane',
+    billingCity: 'Los Angeles',
+    billingZip: '90210',
+    ship: false
+},
+{
+    email: 'Joseph@aol.com',
+    password: 'peanutbutter',
+    salt: 'oiwefhoweihf',
+    googleId: '46275849',
+    address: '4 Puppy Way',
+    city: 'Emporia',
+    state: 'Kansas',
+    zipcode: '66801',
+    role: 'notAdmin',
+    phone: 8631625371,
+    billingAdd: '4 Puppy Way',
+    billingCity: 'Emporia',
+    billingZip: '66801',
+    ship: true
+}]
 
 
 
