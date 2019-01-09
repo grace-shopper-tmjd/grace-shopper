@@ -29,7 +29,10 @@ const User = db.define('user', {
   },
   address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   city: {
     type: Sequelize.STRING,
@@ -48,7 +51,7 @@ const User = db.define('user', {
     defaultValue: 'notAdmin'
   },
   phone: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   billingAdd: {
     type: Sequelize.TEXT,
