@@ -1,4 +1,6 @@
 import React from 'react'
+import SingleBeer from './SingleBeer'
+import {Link} from 'react-router-dom'
 import {
   Container,
   Row,
@@ -25,7 +27,9 @@ const BeerList = ({beers}) => {
                   <CardTitle>{name}</CardTitle>
                   <CardSubtitle>{brand}</CardSubtitle>
                   <CardText>Price: {price}</CardText>
-                  <Button>Button</Button>
+                  <Link to={SingleBeer}>
+                    <Button>Buy</Button>
+                  </Link>
                 </CardBody>
               </Card>
             </Col>
