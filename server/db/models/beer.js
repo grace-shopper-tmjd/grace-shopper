@@ -27,7 +27,11 @@ const Beer = db.define('beer', {
   },
   inventory: {
     type: Sequelize.INTEGER,
-    defaultValue: 0
+    defaultValue: 0,
+    validate: {
+      min: 0,
+      max: 100
+    }
   },
   imageUrl: {
     type: Sequelize.STRING,
