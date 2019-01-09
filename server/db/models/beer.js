@@ -6,34 +6,39 @@ const db = require('../db')
 const Beer = db.define('beer', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   brand: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   inventory: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    defaultValue: 0
   },
   imageUrl: {
     type: Sequelize.STRING,
     validate: {
-      isUrl: true
+      isUrl: true,
+      notEmpty: true
     },
-    defaultValue:
-      'https://cdn1.wine-searcher.net/images/labels/89/86/stillwater-artisanal-extra-dry-sake-saison-beer-maryland-usa-10928986.jpg'
-  },
-  type: {
-    type: Sequelize.STRING,
-    allowNull: false
+    defaultValue: `https://cdn1.wine-searcher.net/images/labels/89/86/stillwater-artisanal-extra-dry-sake-saison-beer-maryland-usa-10928986.jpg`
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false
   },
   ABV: {
@@ -41,7 +46,7 @@ const Beer = db.define('beer', {
     allowNull: false
   },
   packSize: {
-    type: Sequelize.ENUM('1 pack', '6 pack', '12 pack', '24 pack', '36 pack'),
+    type: Sequelize.ENUM('1 pack', '4 pack', '6 pack'),
     allowNull: false
   }
 })
