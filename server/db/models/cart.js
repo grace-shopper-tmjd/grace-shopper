@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-const Sequelize = require('sequelize');
-const db = require('./_db');
+const Sequelize = require('sequelize')
+const db = require('../db')
 
-const Cart = db.define('card', {
+const Cart = db.define('cart', {
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false
   }
-});
+})
 
-module.exports = Cart;
+module.exports = Cart
