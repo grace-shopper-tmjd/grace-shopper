@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {logout} from '../store'
 import {
   Collapse,
@@ -10,12 +10,17 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from 'reactstrap'
+
+const linkStyle = {
+  color: 'rgba(0,0,0,.9)',
+  fontSize: '1.25rem',
+  textDecoration: 'none'
+}
 
 class NavBar extends Component {
   constructor(props) {
@@ -40,30 +45,41 @@ class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink to="/home">Home</NavLink>
+                <NavLink style={linkStyle} to="/">
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink style={linkStyle} to="/beers">
                   Beers
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink style={linkStyle} to="/about">
                   About
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink
+                  style={linkStyle}
+                  to="https://github.com/reactstrap/reactstrap"
+                >
                   Contact
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink
+                  style={linkStyle}
+                  to="https://github.com/reactstrap/reactstrap"
+                >
                   Cart
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
+                <NavLink
+                  style={linkStyle}
+                  to="https://github.com/reactstrap/reactstrap"
+                >
                   Sign Up
                 </NavLink>
               </NavItem>
