@@ -23,3 +23,16 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/style/:styleid', async (req, res, next) => {
+  try {
+    const beers = await Beer.findAll({
+      where: {
+        beerstyleId: req.params.styleid
+      }
+    })
+    res.send(beers)
+  } catch (err) {
+    next(err)
+  }
+})
