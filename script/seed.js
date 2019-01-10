@@ -43,7 +43,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/allagash-white-12oz-bottle_becbeab6-dac2-4b2e-8c5e-56fc798f747d_1080x.jpg?v=1541293849',
-    type: 'Wheat',
     price: 4.99,
     ABV: 5.1,
     packSize: '1 pack',
@@ -57,7 +56,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/allagash-white-12oz-bottle_becbeab6-dac2-4b2e-8c5e-56fc798f747d_1080x.jpg?v=1541293849',
-    type: 'Wheat',
     price: 4.99,
     ABV: 7.5,
     packSize: '1 pack',
@@ -71,7 +69,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/gnomgang_d894f4fa-1312-4153-86b2-b4b7b958a9c4_1080x.jpg?v=1538408950',
-    type: 'Wheat',
     price: 4.99,
     ABV: 7.5,
     packSize: '6 pack',
@@ -85,7 +82,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/gnomgang_d894f4fa-1312-4153-86b2-b4b7b958a9c4_1080x.jpg?v=1538408950',
-    type: 'Belgian',
     price: 10.99,
     ABV: 8.3,
     packSize: '4 pack',
@@ -99,7 +95,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/ommegang-three-philosophers_8ced4806-ae2a-429c-8efe-563d062a6b4a_2048x2048.jpg?v=1538407544',
-    type: 'Belgian',
     price: 11.99,
     ABV: 9.7,
     packSize: '4 pack',
@@ -113,7 +108,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/dogfish-head-120-minute-ipa_136fee83-9d59-4094-a1e2-cc679ed635ca_1080x.jpg?v=1538409767',
-    type: 'IPA',
     price: 12.99,
     ABV: 16.5,
     packSize: '6 pack',
@@ -127,7 +121,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/founders-breakfast-stout-12oz-bottle_13cd98be-539e-4a15-940a-9607ed929706_1080x.jpg?v=1538408825',
-    type: 'Stout',
     price: 3.99,
     ABV: 8.3,
     packSize: '1 pack',
@@ -141,7 +134,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/founders-centennial-ipa-12oz-bottle_bd9bbb73-b677-41d5-a29b-42d3edfb64aa_1080x.jpg?v=1541293851',
-    type: 'IPA',
     price: 3.99,
     ABV: 8.3,
     packSize: '6 pack',
@@ -155,7 +147,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/founders-solid-gold-6pack-cans_f86b1c2d-246f-40bc-b2ae-fc0060b3bd25_1080x.jpg?v=1538411274',
-    type: 'Lager',
     price: 3.99,
     ABV: 4.4,
     packSize: '4 pack',
@@ -169,7 +160,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/founders-all-day-ipa-12oz-bottle_1_4ddbfbaa-1ec7-45fe-aef7-ea6c3ed896b6_1080x.jpg?v=1538407031',
-    type: 'IPA',
     price: 3.99,
     ABV: 4.7,
     packSize: '1 pack',
@@ -183,7 +173,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-a-little-sumpin-sumpin-ale-12oz-bottle_652ab982-a23f-4cd6-bee6-555d0bb67d43_1080x.jpg?v=1541293821',
-    type: 'Ale',
     price: 3.99,
     ABV: 7.5,
     packSize: '6 pack',
@@ -197,7 +186,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-ipa_ee1fc081-4510-44e1-878a-beaecb5b51f3_2048x2048.jpg?v=1538407443',
-    type: 'IPA',
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
@@ -211,7 +199,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-maximus_a9438a91-b3ae-473d-a22c-edafc92aa832_2048x2048.jpg?v=1538407446',
-    type: 'IPA',
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
@@ -225,7 +212,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-maximus_a9438a91-b3ae-473d-a22c-edafc92aa832_2048x2048.jpg?v=1538407446',
-    type: 'Pilsner',
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
@@ -239,7 +225,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-daytime-6pack-cans_2048x2048.jpg?v=1546662828',
-    type: 'IPA',
     price: 3.99,
     ABV: 4,
     packSize: '4 pack',
@@ -253,7 +238,6 @@ const beers = [
     inventory: 30,
     imageUrl:
       'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/lagunitas-willettized-coffee-stout-2018-2ox-bottle_1080x.jpg?v=1544761814',
-    type: 'Stout',
     price: 12.99,
     ABV: 12.9,
     packSize: '4 pack',

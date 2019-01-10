@@ -46,7 +46,7 @@ const Beer = db.define('beer', {
     allowNull: false
   },
   ABV: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.DECIMAL(10, 1),
     allowNull: false
   },
   packSize: {

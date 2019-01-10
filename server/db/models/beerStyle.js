@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const BeerStyle = db.define('beerstyle', {
+const BeerStyle = db.define('beerStyle', {
   name: {
     type: Sequelize.STRING
   }
