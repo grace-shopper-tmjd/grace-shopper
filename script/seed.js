@@ -263,6 +263,8 @@ const beers = [
 
 const users = [
   {
+    firstName: 'Camille',
+    lastName: 'Jones',
     email: 'Camille@yahoo.com',
     password: 'jar',
     salt: 'awoiejirg',
@@ -279,6 +281,8 @@ const users = [
     ship: false
   },
   {
+    firstName: 'Lala',
+    lastName: 'Lewis',
     email: 'lala@yahoo.com',
     password: 'jar',
     salt: 'awoiejirg',
@@ -295,6 +299,8 @@ const users = [
     ship: false
   },
   {
+    firstName: 'Loretta',
+    lastName: 'James',
     email: 'Loretta@yahoo.com',
     password: 'apple',
     salt: 'aeugaewkfhuk',
@@ -311,6 +317,8 @@ const users = [
     ship: true
   },
   {
+    firstName: 'Rufus',
+    lastName: 'Michaels',
     email: 'Rufus@aol.com',
     password: 'snickerdoodle',
     salt: 'uewhaewufhaewkfh',
@@ -327,6 +335,8 @@ const users = [
     ship: true
   },
   {
+    firstName: 'Philip',
+    lastName: 'Marks',
     email: 'Philip@aol.com',
     password: 'kumquat',
     salt: 'oeofqhefoih',
@@ -343,6 +353,8 @@ const users = [
     ship: false
   },
   {
+    firstName: 'Joseph',
+    lastName: 'Smith',
     email: 'Joseph@aol.com',
     password: 'peanutbutter',
     salt: 'oiwefhoweihf',
