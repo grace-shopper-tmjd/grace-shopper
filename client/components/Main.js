@@ -9,6 +9,7 @@ import {
   CardImgOverlay,
   Button
 } from 'reactstrap'
+import {Link} from 'react-router-dom'
 
 export default class Main extends Component {
   render() {
@@ -35,6 +36,11 @@ export default class Main extends Component {
       fontSize: '25px',
       backgroundColor: 'rgba(255,255,255, 0.2)',
       border: '2px solid white'
+    }
+
+    const linkStyle = {
+      color: 'white',
+      textDecoration: 'none'
     }
 
     return (
@@ -66,7 +72,9 @@ export default class Main extends Component {
           </p>
           <p className="lead text-center h3">
             <Button color="primary" style={buttonStyle}>
-              Explore Our Beers
+              <Link to="/beers" style={linkStyle}>
+                Explore Our Beers
+              </Link>
             </Button>
           </p>
         </div>
