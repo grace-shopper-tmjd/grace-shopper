@@ -241,6 +241,8 @@
 // ]
 
 // const users = [{
+//   firstName: 'Camille',
+//   lastName: 'Jones',
 //   email: 'Camille@yahoo.com',
 //   password: 'jar',
 //   salt: 'awoiejirg',
@@ -257,6 +259,8 @@
 //   ship: false
 // },
 // {
+//   firstName: 'Loretta',
+//   lastName: 'Price',
 //   email: 'Loretta@yahoo.com',
 //   password: 'apple',
 //   salt: 'aeugaewkfhuk',
@@ -273,6 +277,8 @@
 //   ship: true
 // },
 // {
+//   firstName: 'Rufus',
+//   lastName: 'Smith',
 //   email: 'Rufus@aol.com',
 //   password: 'snickerdoodle',
 //   salt: 'uewhaewufhaewkfh',
@@ -289,6 +295,8 @@
 //   ship: true
 // },
 // {
+//   firstName: 'Philip',
+//   lastName: 'Price',
 //   email: 'Philip@aol.com',
 //   password: 'kumquat',
 //   salt: 'oeofqhefoih',
@@ -305,6 +313,8 @@
 //   ship: false
 // },
 // {
+//   firstName: 'Joseph',
+//   lastName: 'Daniels',
 //   email: 'Joseph@aol.com',
 //   password: 'peanutbutter',
 //   salt: 'oiwefhoweihf',
