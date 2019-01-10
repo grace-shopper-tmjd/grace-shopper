@@ -33,7 +33,7 @@ const beers = [
     price: 21.99,
     ABV: 2,
     packSize: '1 pack',
-    beerstyleId: 1
+    beerStyleId: 1
   },
   {
     name: 'Allagash White - 12oz Bottle',
@@ -47,7 +47,7 @@ const beers = [
     price: 4.99,
     ABV: 5.1,
     packSize: '1 pack',
-    beerstyleId: 1
+    beerStyleId: 1
   },
   {
     name: 'Allagash Map 40 - 12oz Bottle',
@@ -61,7 +61,7 @@ const beers = [
     price: 4.99,
     ABV: 7.5,
     packSize: '1 pack',
-    beerstyleId: 2
+    beerStyleId: 2
   },
   {
     name: 'Gnomegang - 12oz Bottle',
@@ -75,7 +75,7 @@ const beers = [
     price: 4.99,
     ABV: 7.5,
     packSize: '6 pack',
-    beerstyleId: 2
+    beerStyleId: 2
   },
   {
     name: 'Ommegang Game of Thrones Winter is Here',
@@ -89,7 +89,7 @@ const beers = [
     price: 10.99,
     ABV: 8.3,
     packSize: '4 pack',
-    beerstyleId: 3
+    beerStyleId: 3
   },
   {
     name: 'Ommegang Three Philosophers',
@@ -103,7 +103,7 @@ const beers = [
     price: 11.99,
     ABV: 9.7,
     packSize: '4 pack',
-    beerstyleId: 3
+    beerStyleId: 3
   },
   {
     name: 'Dogfish Head 120 Minute IPA',
@@ -117,7 +117,7 @@ const beers = [
     price: 12.99,
     ABV: 16.5,
     packSize: '6 pack',
-    beerstyleId: 3
+    beerStyleId: 3
   },
   {
     name: 'Founders Breakfast Stout',
@@ -131,7 +131,7 @@ const beers = [
     price: 3.99,
     ABV: 8.3,
     packSize: '1 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: 'Founders Centennial IPA',
@@ -145,7 +145,7 @@ const beers = [
     price: 3.99,
     ABV: 8.3,
     packSize: '6 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: 'Founders Solid Gold',
@@ -159,7 +159,7 @@ const beers = [
     price: 3.99,
     ABV: 4.4,
     packSize: '4 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: 'Founders All Day IPA',
@@ -173,7 +173,7 @@ const beers = [
     price: 3.99,
     ABV: 4.7,
     packSize: '1 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: "Lagunitas A Little Sumpin' Sumpin' Ale'",
@@ -187,7 +187,7 @@ const beers = [
     price: 3.99,
     ABV: 7.5,
     packSize: '6 pack',
-    beerstyleId: 2
+    beerStyleId: 2
   },
   {
     name: 'Lagunitas India Pale Ale',
@@ -201,7 +201,7 @@ const beers = [
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
-    beerstyleId: 1
+    beerStyleId: 1
   },
   {
     name: 'Lagunitas Maximus',
@@ -215,7 +215,7 @@ const beers = [
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: 'Lagunitas Pils',
@@ -229,7 +229,7 @@ const beers = [
     price: 3.99,
     ABV: 6.2,
     packSize: '6 pack',
-    beerstyleId: 4
+    beerStyleId: 4
   },
   {
     name: 'Lagunitas DayTime',
@@ -243,7 +243,7 @@ const beers = [
     price: 3.99,
     ABV: 4,
     packSize: '4 pack',
-    beerstyleId: 3
+    beerStyleId: 3
   },
   {
     name: 'Lagunitas Willettized Coffee Stout 2018',
@@ -257,7 +257,7 @@ const beers = [
     price: 12.99,
     ABV: 12.9,
     packSize: '4 pack',
-    beerstyleId: 3
+    beerStyleId: 3
   }
 ]
 
