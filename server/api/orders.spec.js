@@ -11,7 +11,7 @@ describe('Order routes', () => {
     return db.sync({force: true})
   })
 
-  describe('/api/users/', () => {
+  describe('/api/orders/', () => {
     beforeEach(() => {
       return Order.create({
         orderNumber: '1468702106',
