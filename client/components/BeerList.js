@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import SingleBeer from './SingleBeer'
 import {Link} from 'react-router-dom'
 import {
   Container,
