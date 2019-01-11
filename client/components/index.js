@@ -5,9 +5,12 @@
  */
 export {default as NavBar} from './Navbar'
 export {default as UserHome} from './User-home'
-export {Login, Signup} from './Auth-form'
+// export {Login, Signup} from './Auth-form'
+export {Login} from './Auth-form'
 export {default as Main} from './Main'
 export {default as BeerList} from './BeerList'
 export {default as SingleBeer} from './SingleBeer'
 export {default as About} from './About'
 export {default as Cart} from './Cart'
+export {default as Signup} from './Signup'
+export {default as Contact} from './Contact'
