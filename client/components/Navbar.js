@@ -13,8 +13,10 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Button
 } from 'reactstrap'
+import Cart from './Cart'
 
 const linkStyle = {
   color: 'rgba(0,0,0,.9)',
@@ -28,17 +30,37 @@ class NavBar extends Component {
 
     this.toggle = this.toggle.bind(this)
     this.state = {
-      isOpen: false
+      isOpen: false,
+      cartOpen: false
     }
+    this.openCart = this.openCart.bind(this)
+    this.closeCart = this.closeCart.bind(this)
   }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     })
   }
+
+  openCart() {
+    this.setState({
+      cartOpen: true
+    })
+  }
+
+  closeCart() {
+    console.log('closing cart')
+    this.setState({
+      cartOpen: false
+    })
+  }
+
   render() {
     return (
       <div>
+        {this.state.cartOpen ? (
+          <Cart closeCart={this.closeCart} isOpen={this.state.cartOpen} />
+        ) : null}
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">Tops Hops</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -67,14 +89,16 @@ class NavBar extends Component {
                   Contact
                 </NavLink>
               </NavItem>
+
               <NavItem>
-                <NavLink
-                  style={linkStyle}
-                  to="https://github.com/reactstrap/reactstrap"
-                >
+                {/* <NavLink style={linkStyle} to="/cart" >
                   Cart
-                </NavLink>
+                </NavLink> */}
+                <Button color="danger" onClick={this.openCart}>
+                  Cart
+                </Button>
               </NavItem>
+
               <NavItem>
                 <NavLink
                   style={linkStyle}
