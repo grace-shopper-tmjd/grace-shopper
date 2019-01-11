@@ -12,7 +12,13 @@ class Cart extends React.Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.props.isOpen}>
+        <Modal
+          style={{
+            marginRight: 0,
+            height: '100vh'
+          }}
+          isOpen={this.props.isOpen}
+        >
           <ModalHeader>Modal title</ModalHeader>
           <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
