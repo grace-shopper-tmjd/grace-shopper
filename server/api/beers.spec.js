@@ -46,20 +46,6 @@ describe('Beer routes', () => {
       return db.sync({force: true})
     })
     it('it serves up a single beer', async () => {
-      // await Beer.create({
-      //     name: 'Founders Solid Gold',
-      //     brand: 'Founders Brewing Co.',
-      //     description:
-      //         'Selected as a benchmark for the Beer Judge Certification Program used in all American based beer judgings. Centennial IPA has quickly become the IPA of choice. Pour yourself a pint of this complex flavorful ale and bask in the frothy head’s floral bouquet. Relish the immense citrus accents, achieved by the abundance of dry hopping. This ale’s sweet, malty undertones balance the hop character with a finish that never turns too bitter.',
-      //     inventory: 100,
-      //     imageUrl:
-      //         'https://cdn.shopify.com/s/files/1/0067/6030/0609/products/founders-solid-gold-6pack-cans_f86b1c2d-246f-40bc-b2ae-fc0060b3bd25_1080x.jpg?v=1538411274',
-      //     price: 40.99,
-      //     ABV: 4.4,
-      //     packSize: '4 pack',
-      //     beerStyleId: 1
-      // });
-
       const styles = [
         {
           name: 'IPA'
