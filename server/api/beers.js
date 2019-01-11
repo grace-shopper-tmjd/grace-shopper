@@ -24,11 +24,11 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/style/:beerstyleid', async (req, res, next) => {
+router.get('/style/:beerStyleId', async (req, res, next) => {
   try {
     const beers = await Beer.findAll({
       where: {
-        beerStyleId: req.params.beerstyleid
+        beerStyleId: req.params.beerStyleId
       }
     })
     res.send(beers)
