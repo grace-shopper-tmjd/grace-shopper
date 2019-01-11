@@ -2,6 +2,14 @@ const router = require('express').Router()
 const {Order, OrderDetails, Beer, BeerStyle} = require('../db/models/index')
 module.exports = router
 
+const throwNotFoundIfFalsey = maybeFalsey => {
+  if (!maybeFalsey) {
+    const err = Error('beer not found')
+    err.status = 404
+    throw err
+  }
+}
+
 //get all orders
 router.get('/', async (req, res, next) => {
   try {
@@ -66,5 +74,45 @@ router.get('/:userId/:orderId', async (req, res, next) => {
   }
 })
 
-//remove from cart
-//add to car
+//remove orderDetails from cart
+
+router.delete('/:userId/:orderId/:orderDetailsId', async (req, res, next) => {
+  const {orderDetailsId} = req.params
+  try {
+    const deletedItem = await OrderDetails.destroy({
+      where: {
+        id: orderDetailsId
+      }
+    })
+    throwNotFoundIfFalsey(deletedItem)
+    res.sendStatus(204)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//add orderDetails to cart
+
+router.post('/:userId/cart/add', async (req, res, next) => {
+  try {
+    const userId = req.params.userId
+    const cart = await Order.findOne({
+      where: {
+        shipped: false,
+        userId
+      }
+    })
+    const {quantity, price, beerId} = req.body
+
+    const orderDetailsItem = await OrderDetails.create({
+      quantity,
+      price,
+      beerId,
+      orderId: cart.id
+    })
+
+    res.send(orderDetailsItem)
+  } catch (err) {
+    next(err)
+  }
+})
