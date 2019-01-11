@@ -24,7 +24,9 @@ describe('Beer routes', () => {
       const res = await request(app)
         .get('/api/beers')
         .expect(200)
-
+      if (typeof res.body === 'string') {
+        res.body = JSON.parse(res.body)
+      }
       expect(res.body).to.be.an('array')
       expect(res.body[0].brand).to.be.equal('Lagunitas Brewing Company')
     })
