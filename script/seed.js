@@ -358,74 +358,44 @@ const users = [
 
 const orders = [
   {
-    orderNumber: '1468702106',
-    orderDate: new Date(),
     shipped: false,
-    userId: 1,
-    orderDetailsId: 1
+    userId: 3
   },
   {
-    orderNumber: '7230300940',
-    orderDate: new Date(),
     shipped: false,
-    userId: 1,
-    orderDetailsId: 2
+    userId: 1
   },
   {
-    orderNumber: '0464719925',
-    orderDate: new Date(),
     shipped: true,
-    userId: 2,
-    orderDetailsId: 3
+    userId: 4
   },
   {
-    orderNumber: '6822459111',
-    orderDate: new Date(),
     shipped: false,
-    userId: 2,
-    orderDetailsId: 4
-  },
-  {
-    orderNumber: '5360186429',
-    orderDate: new Date(),
-    shipped: true,
-    userId: 2,
-    orderDetailsId: 5
+    userId: 2
   },
   {
     userId: 2,
-    orderDetailsId: 6,
-    orderNumber: '3771006201',
-    orderDate: new Date(),
     shipped: true
   },
   {
-    orderNumber: '4326521961',
-    orderDate: new Date(),
-    shipped: true,
-    userId: 2,
-    orderDetailsId: 7
-  },
-  {
-    orderNumber: '5761182963',
-    orderDate: new Date(),
-    shipped: true,
-    userId: 6,
-    orderDetailsId: 8
-  },
-  {
-    orderNumber: '3323951549',
-    orderDate: new Date(),
-    shipped: false,
-    userId: 4,
-    orderDetailsId: 9
-  },
-  {
-    orderNumber: '6734058093',
-    orderDate: new Date(),
-    shipped: true,
     userId: 5,
-    orderDetailsId: 10
+    shipped: true
+  },
+  {
+    shipped: true,
+    userId: 6
+  },
+  {
+    shipped: true,
+    userId: 2
+  },
+  {
+    shipped: false,
+    userId: 3
+  },
+  {
+    shipped: true,
+    userId: 4
   }
 ]
 
@@ -438,19 +408,19 @@ const orderDetails = [
   },
   {
     beerId: 2,
-    orderId: 11,
+    orderId: 8,
     quantity: 10,
     price: 91.16
   },
   {
     beerId: 1,
-    orderId: 8,
+    orderId: 5,
     quantity: 9,
     price: 29.06
   },
   {
     beerId: 4,
-    orderId: 1,
+    orderId: 7,
     quantity: 5,
     price: 17.69
   },
