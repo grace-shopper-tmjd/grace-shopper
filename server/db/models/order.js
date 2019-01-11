@@ -5,18 +5,21 @@ const db = require('../db')
 
 const Order = db.define('order', {
   orderNumber: {
-    type: Sequelize.BIGINT,
-    allowNull: false
+    type: Sequelize.INTEGER,
+    defaultValue: 1
   },
   orderDate: {
     type: Sequelize.DATE,
-    allowNull: false
+    default: new Date()
   },
   shipped: {
     type: Sequelize.BOOLEAN,
-    default: false,
-    allowNull: false
+    default: false
   }
+})
+
+Order.afterCreate(order => {
+  order.orderNumber++
 })
 
 module.exports = Order
