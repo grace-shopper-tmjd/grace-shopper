@@ -138,5 +138,8 @@ describe('The `beer` model', () => {
       expect(foundBeer.beerStyle).to.exist // eslint-disable-line no-unused-expressions
       expect(foundBeer.beerStyle.name).to.equal('Lager')
     })
+    after(() => {
+      return db.sync({force: true})
+    })
   })
 })
