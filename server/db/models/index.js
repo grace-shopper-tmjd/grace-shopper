@@ -10,8 +10,8 @@ const BeerStyle = require('./beerStyle')
 //assocations
 Order.belongsTo(User)
 OrderDetails.belongsTo(Beer)
-// OrderDetails.belongsTo(Order)
-Order.belongsTo(OrderDetails)
+OrderDetails.belongsTo(Order)
+// Order.belongsTo(OrderDetails)
 
 Beer.belongsTo(BeerStyle)
 
