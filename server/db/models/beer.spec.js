@@ -6,7 +6,6 @@ const {Beer, BeerStyle} = require('./index')
 
 //
 const {expect} = require('chai')
-const chaiThings = require('chai-things')
 // const assertType = require('chai-asserttype')
 
 describe('The `beer` model', () => {
@@ -101,11 +100,11 @@ describe('The `beer` model', () => {
     })
   })
 
-  describe('associations', () => {
+  describe('associations', async () => {
     //  Add a `belongsTo` relationship between articles and users,
     //  but make sure the user is aliased as `author` for each article.
 
-    it("belongs to a user, who is stored as the article's `author`", async () => {
+    it('beerSyle belongs to a beer, that is stored as the beerStyleId', async () => {
       const creatingBeerStyle = BeerStyle.create({
         name: 'Lager'
       })
@@ -128,7 +127,7 @@ describe('The `beer` model', () => {
         creatingBeer
       ])
 
-      // this method `setAuthor` automatically exists if you set up the association correctly
+      // this method `setBeerStyle` automatically exists if you set up the association correctly
       await createdBeer.setBeerStyle(createdBeerStyle)
 
       const foundBeer = await Beer.findOne({
