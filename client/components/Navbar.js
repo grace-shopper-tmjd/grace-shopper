@@ -82,10 +82,7 @@ class NavBar extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  style={linkStyle}
-                  to="https://github.com/reactstrap/reactstrap"
-                >
+                <NavLink style={linkStyle} to="/contact">
                   Contact
                 </NavLink>
               </NavItem>
@@ -100,10 +97,7 @@ class NavBar extends Component {
               </NavItem>
 
               <NavItem>
-                <NavLink
-                  style={linkStyle}
-                  to="https://github.com/reactstrap/reactstrap"
-                >
+                <NavLink style={linkStyle} to="/signup">
                   Sign Up
                 </NavLink>
               </NavItem>
