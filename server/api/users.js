@@ -4,7 +4,7 @@ module.exports = router
 
 const throwNotFoundIfFalsey = maybeFalsey => {
   if (!maybeFalsey) {
-    const err = Error('beer not found')
+    const err = Error('user not found')
     err.status = 404
     throw err
   }
