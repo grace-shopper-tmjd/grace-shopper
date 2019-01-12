@@ -1,8 +1,21 @@
 import React, {Component} from 'react'
-
+import {connect} from 'react-redux'
 import {Container, Row, Col, Button, Input, Label, FormGroup} from 'reactstrap'
 
+import {fetchSingleBeer} from '../actions/index'
+
 class SingleBeer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      beer: {}
+    }
+  }
+
+  componentDidMount() {
+    this.props.getSingleBeer()
+  }
+
   render() {
     const beer = {
       name: 'Bud Light® Beer - 30pk / 12oz Cans',
@@ -56,4 +69,16 @@ class SingleBeer extends Component {
   }
 }
 
-export default SingleBeer
+const mapStateToProps = state => {
+  return {
+    beer: state.beers.selectedBeer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingleBeer: id => dispatch(fetchSingleBeer(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleBeer)
