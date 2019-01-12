@@ -14,7 +14,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
+  Button,
+  Dropdown,
+  Link
 } from 'reactstrap'
 import Cart from './Cart'
 
@@ -31,10 +33,16 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      cartOpen: false
+      cartOpen: false,
+      beerMenu: false,
+      beerStyle: false,
+      packSize: false
     }
     this.openCart = this.openCart.bind(this)
     this.closeCart = this.closeCart.bind(this)
+    this.toggleBeerMenu = this.toggleBeerMenu.bind(this)
+    this.toggleBeerStyle = this.toggleBeerStyle.bind(this)
+    this.togglePackSize = this.togglePackSize.bind(this)
   }
   toggle() {
     this.setState({
@@ -49,9 +57,28 @@ class NavBar extends Component {
   }
 
   closeCart() {
-    console.log('closing cart')
     this.setState({
       cartOpen: false
+    })
+  }
+
+  toggleBeerMenu() {
+    this.setState({
+      beerMenu: !this.state.beerMenu
+    })
+  }
+
+  toggleBeerStyle() {
+    console.log('toggling beer style')
+    this.setState({
+      beerStyle: !this.state.beerStyle
+    })
+  }
+
+  togglePackSize() {
+    console.log('toggling pack size')
+    this.setState({
+      packSize: !this.state.packSize
     })
   }
 
@@ -66,16 +93,61 @@ class NavBar extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+              {/* link to home */}
               <NavItem>
                 <NavLink style={linkStyle} to="/">
                   Home
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink style={linkStyle} to="/beers">
+
+              {/* start of beers menu item */}
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle style={linkStyle} nav caret>
                   Beers
-                </NavLink>
-              </NavItem>
+                </DropdownToggle>
+
+                <DropdownMenu>
+                  {/* all beers dropdown menu item */}
+                  <DropdownItem tag="a" href="/beers">
+                    All Beers
+                  </DropdownItem>
+
+                  {/* by beer style menu item */}
+                  <DropdownItem>
+                    <Dropdown
+                      direction="right"
+                      isOpen={this.state.beerStyle}
+                      toggle={() => this.toggleBeerStyle}
+                    >
+                      <DropdownToggle caret>By Beer Style</DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>1</DropdownItem>
+                        <DropdownItem>2</DropdownItem>
+                        <DropdownItem>3</DropdownItem>
+                        <DropdownItem>4</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </DropdownItem>
+
+                  {/* by pack size menu */}
+                  <DropdownItem>
+                    <UncontrolledDropdown
+                      direction="right"
+                      isOpen={this.state.packSize}
+                    >
+                      <DropdownToggle caret>By Pack Size</DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>a</DropdownItem>
+                        <DropdownItem>b</DropdownItem>
+                        <DropdownItem>c</DropdownItem>
+                        <DropdownItem>d</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+
+              {/* link to about */}
               <NavItem>
                 <NavLink style={linkStyle} to="/about">
                   About
@@ -87,20 +159,21 @@ class NavBar extends Component {
                 </NavLink>
               </NavItem>
 
+              {/* link to cart */}
               <NavItem>
-                {/* <NavLink style={linkStyle} to="/cart" >
-                  Cart
-                </NavLink> */}
                 <Button color="danger" onClick={this.openCart}>
                   Cart
                 </Button>
               </NavItem>
 
+              {/* link to login page */}
               <NavItem>
-                <NavLink style={linkStyle} to="/signup">
-                  Sign Up
+                <NavLink style={linkStyle} to="/login">
+                  Login
                 </NavLink>
               </NavItem>
+
+              {/* end of navbar */}
             </Nav>
           </Collapse>
         </Navbar>
@@ -109,33 +182,6 @@ class NavBar extends Component {
   }
 }
 
-// class Navbar = ({handleClick, isLoggedIn}) => (
-//   <div>
-//     <h1>BOILERMAKER</h1>
-//     <nav>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-// )
-
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id
