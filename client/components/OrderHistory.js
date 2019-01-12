@@ -1,7 +1,7 @@
 import React from 'react'
 import {Table} from 'reactstrap'
 
-export default class Example extends React.Component {
+export default class OrderHistory extends React.Component {
   render() {
     return (
       <Table>
