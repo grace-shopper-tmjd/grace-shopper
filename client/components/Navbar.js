@@ -15,15 +15,18 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  Dropdown,
-  Link
+  Dropdown
 } from 'reactstrap'
 import Cart from './Cart'
 
 const linkStyle = {
-  color: 'rgba(0,0,0,.9)',
-  fontSize: '1.25rem',
-  textDecoration: 'none'
+  color: 'rgba(0,0,0,.5)',
+  paddingRight: '.5rem',
+  paddingLeft: '.5rem',
+  textDecoration: 'none',
+  display: 'block',
+  padding: '.5rem 1rem',
+  margin: '1em'
 }
 
 class NavBar extends Component {
@@ -102,51 +105,16 @@ class NavBar extends Component {
 
               {/* start of beers menu item */}
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle style={linkStyle} nav caret>
+                <DropdownToggle nav caret>
                   Beers
                 </DropdownToggle>
-
-                <DropdownMenu>
-                  {/* all beers dropdown menu item */}
-                  <DropdownItem tag="a" href="/beers">
-                    All Beers
-                  </DropdownItem>
-
-                  {/* by beer style menu item */}
-                  <DropdownItem>
-                    <Dropdown
-                      direction="right"
-                      isOpen={this.state.beerStyle}
-                      toggle={() => this.toggleBeerStyle}
-                    >
-                      <DropdownToggle caret>By Beer Style</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>1</DropdownItem>
-                        <DropdownItem>2</DropdownItem>
-                        <DropdownItem>3</DropdownItem>
-                        <DropdownItem>4</DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
-                  </DropdownItem>
-
-                  {/* by pack size menu */}
-                  <DropdownItem>
-                    <UncontrolledDropdown
-                      direction="right"
-                      isOpen={this.state.packSize}
-                    >
-                      <DropdownToggle caret>By Pack Size</DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>a</DropdownItem>
-                        <DropdownItem>b</DropdownItem>
-                        <DropdownItem>c</DropdownItem>
-                        <DropdownItem>d</DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </DropdownItem>
+                <DropdownMenu right>
+                  <DropdownItem href="/beers">All Beers</DropdownItem>
+                  <DropdownItem>By Pack Size</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>By Style</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-
               {/* link to about */}
               <NavItem>
                 <NavLink style={linkStyle} to="/about">
@@ -172,7 +140,6 @@ class NavBar extends Component {
                   Login
                 </NavLink>
               </NavItem>
-
               {/* end of navbar */}
             </Nav>
           </Collapse>
