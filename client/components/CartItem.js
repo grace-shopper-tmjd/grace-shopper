@@ -18,10 +18,10 @@ const CartItem = props => (
           {props.order.beer.name}
         </Media>
         <Media body>
-          <div>{props.order.beer.price}</div>
-          <div>{props.order.beer.quantity}</div>
-          <div>{props.order.beer.packSize}</div>
-          <div>{props.order.beer.beerStyle.name}</div>
+          <div>Price: {props.order.beer.price}</div>
+          <div>Quantity: {props.order.quantity}</div>
+          <div>Pack size: {props.order.beer.packSize}</div>
+          <div>Beer style: {props.order.beer.beerStyle.name}</div>
         </Media>
       </Media>
       <Button className="ml-2" color="danger">

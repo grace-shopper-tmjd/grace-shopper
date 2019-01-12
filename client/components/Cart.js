@@ -314,15 +314,6 @@ class Cart extends React.Component {
           }}
           isOpen={this.props.isOpen}
         >
-          {/* <Button
-              center
-              close
-              style={divStyle}
-              className="custom-close-button"
-              onClick={this.props.closeCart}
-            >
-              {this.props.buttonLabel}
-            </Button> */}
           <ModalHeader className="cartHeader" toggle={this.toggle}>
             Cart
             <Button
