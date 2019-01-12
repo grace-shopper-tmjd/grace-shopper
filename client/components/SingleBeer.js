@@ -13,7 +13,7 @@ class SingleBeer extends Component {
   }
 
   componentDidMount() {
-    this.props.getSingleBeer()
+    this.props.getSingleBeer(id)
   }
 
   render() {
