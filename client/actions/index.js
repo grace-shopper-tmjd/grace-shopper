@@ -58,6 +58,6 @@ export const fetchAllBeers = () => async dispatch => {
 export const fetchAllOrders = () => async dispatch => {
   const {data} = await axios.get('/api/orders')
   const orders = data
-  const action = gotAllBeersFromServer(orders)
+  const action = gotAllOrdersFromServer(orders)
   dispatch(action)
 }
