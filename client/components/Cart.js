@@ -72,15 +72,16 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ListGroup,
-  ListGroupItem
+  ListGroup
 } from 'reactstrap'
 import {CartItem} from './index'
 
 class Cart extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      cartItems: []
+    }
   }
 
   render() {
@@ -93,10 +94,17 @@ class Cart extends React.Component {
           }}
           isOpen={this.props.isOpen}
         >
-          <Button close onClick={this.props.closeCart}>
-            {this.props.buttonLabel}
-          </Button>
-          <ModalHeader>Cart</ModalHeader>
+          <div>
+            <Button
+              right
+              close
+              className="custom-close-button"
+              onClick={this.props.closeCart}
+            >
+              {this.props.buttonLabel}
+            </Button>
+            <ModalHeader>Cart</ModalHeader>
+          </div>
           <ModalBody>
             <ListGroup>
               {orders.map(order => <CartItem key={order.id} order={order} />)}
