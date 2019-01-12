@@ -168,8 +168,8 @@ class NavBar extends Component {
 
               {/* link to login page */}
               <NavItem>
-                <NavLink style={linkStyle} to="/signup">
-                  Log in
+                <NavLink style={linkStyle} to="/login">
+                  Login
                 </NavLink>
               </NavItem>
 
