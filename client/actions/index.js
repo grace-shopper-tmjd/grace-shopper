@@ -52,7 +52,7 @@ export const fetchAllBeers = () => async dispatch => {
   dispatch(action)
 }
 
-// Thunk Creator - Beer
+// Thunk Creator - Order
 // ===========================================
 
 export const fetchAllOrders = () => async dispatch => {
