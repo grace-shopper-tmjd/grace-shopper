@@ -28,3 +28,27 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json(user)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const array = await User.update(req.body, {
+      returning: true,
+      where: {
+        id: req.params.id
+      }
+    })
+    throwNotFoundIfFalsey(array[0])
+    res.json(array[1])
+  } catch (err) {
+    next(err)
+  }
+})
