@@ -73,7 +73,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const array = await Pug.update(req.body, {
+    const array = await Beer.update(req.body, {
       returning: true,
       where: {
         id: req.params.id
