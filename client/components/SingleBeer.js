@@ -69,7 +69,8 @@ class SingleBeer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const beerId = Number(ownProps.match.params.beerId)
   return {
     beer: state.beers.selectedBeer
   }
