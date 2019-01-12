@@ -67,7 +67,7 @@ class LoginForm extends Component {
           </FormGroup>
           <FormGroup check row>
             <Col sm={{size: 10, offset: 2}}>
-              <Button>Submit</Button>
+              <Button>Login</Button>
             </Col>
           </FormGroup>
         </Form>
