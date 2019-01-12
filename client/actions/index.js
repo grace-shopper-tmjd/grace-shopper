@@ -53,7 +53,7 @@ export const fetchAllBeers = () => async dispatch => {
 }
 
 export const fetchSingleBeer = beerId => async dispatch => {
-  const {data} = await axios.get('/api/beers/beerId')
+  const {data} = await axios.get(`/api/beers/${beerId}`)
   const beer = data
   const action = gotSingleBeerFromServer(beer)
   dispatch(action)

@@ -7,40 +7,28 @@ import {fetchSingleBeer} from '../actions/index'
 class SingleBeer extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      beer: {}
-    }
+    this.state = {}
   }
 
   componentDidMount() {
-    this.props.getSingleBeer(id)
+    this.props.getSingleBeer(this.props.match.params.beerId)
   }
 
   render() {
-    const beer = {
-      name: 'Bud Light® Beer - 30pk / 12oz Cans',
-      brand: 'Bud Light',
-      description:
-        'Bud Light is brewed using a blend of premium aroma hop varieties, both American-grown and imported, and a combination of barley malts and rice. Its superior drinkability and refreshing flavormakesit the worlds favorite light beer.',
-      inventory: 30,
-      imageUrl:
-        'https://target.scene7.com/is/image/Target/GUEST_6bf09092-e0c3-43a9-a5e2-777a26287c8b?wid=1464&hei=1464&fmt=webp',
-      type: 'IPA',
-      price: 21.99,
-      ABV: 2,
-      packSize: 30
-    }
-    const {id, imageUrl, name, brand, price, description} = beer
     return (
       <Container>
         <Row>
           <Col lg={6}>
-            <img width="100%" src={imageUrl} alt="Responsive image" />
+            <img
+              width="100%"
+              src={this.props.beer.imageUrl}
+              alt="Responsive image"
+            />
           </Col>
           <Col lg={6}>
-            <h3>{name}</h3>
-            <h4>{brand}</h4>
-            <h5>Price: {price}</h5>
+            <h3>{this.props.beer.name}</h3>
+            <h4>{this.props.beer.brand}</h4>
+            <h5>Price: {this.props.beer.price}</h5>
             <FormGroup>
               <Label for="exampleSelect">Pack Size</Label>
               <Input type="select" name="select" id="exampleSelect">
@@ -61,7 +49,7 @@ class SingleBeer extends Component {
             </FormGroup>
             <Button>Add To Cart</Button>
             <h4>Product Description</h4>
-            <p>{description}</p>
+            <p>{this.props.beer.description}</p>
           </Col>
         </Row>
       </Container>
@@ -69,8 +57,7 @@ class SingleBeer extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const beerId = Number(ownProps.match.params.beerId)
+const mapStateToProps = state => {
   return {
     beer: state.beers.selectedBeer
   }
