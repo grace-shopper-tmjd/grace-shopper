@@ -19,7 +19,33 @@ const CartItem = props => (
         </Media>
         <Media body>
           <div>Price: {props.order.beer.price}</div>
-          <div>Quantity: {props.order.quantity}</div>
+          <div>
+            <Button
+              bsStyle="default"
+              style={{
+                size: '10px',
+                marginRight: '5px',
+                color: 'black',
+                backgroundColor: 'white',
+                borderRadius: '50%'
+              }}
+              bsSize="xsmall"
+            >
+              -
+            </Button>
+            {props.order.quantity}
+            <Button
+              style={{
+                marginLeft: '5px',
+                color: 'black',
+                backgroundColor: 'white',
+                borderRadius: '50%'
+              }}
+              bsSize="xsmall"
+            >
+              +
+            </Button>
+          </div>
           <div>Pack size: {props.order.beer.packSize}</div>
           <div>Beer style: {props.order.beer.beerStyle.name}</div>
         </Media>
