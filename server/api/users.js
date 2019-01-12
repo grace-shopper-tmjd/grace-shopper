@@ -2,6 +2,14 @@ const router = require('express').Router()
 const {User} = require('../db/models/index')
 module.exports = router
 
+const throwNotFoundIfFalsey = maybeFalsey => {
+  if (!maybeFalsey) {
+    const err = Error('user not found')
+    err.status = 404
+    throw err
+  }
+}
+
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -48,6 +56,20 @@ router.put('/:id', async (req, res, next) => {
     })
     throwNotFoundIfFalsey(array[0])
     res.json(array[1])
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deletedUser = await User.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    throwNotFoundIfFalsey(deletedUser)
+    res.sendStatus(204)
   } catch (err) {
     next(err)
   }
