@@ -116,3 +116,41 @@ router.post('/:userId/cart/add', async (req, res, next) => {
     next(err)
   }
 })
+
+//update quantity of an order detail
+
+router.put('/updateCart/:cartItem', async (req, res, next) => {
+  const cartItemId = req.params.cartItem
+  try {
+    const updatedOrderDetail = await OrderDetails.update(
+      {
+        quantity: req.body.quantity
+      },
+      {
+        where: {id: cartItemId}
+      }
+    )
+    res.send(updatedOrderDetail)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//change order from not shipped to shipped
+
+router.put('/:userId/cart', async (req, res, next) => {
+  const userId = req.params.userId
+  try {
+    const updatedOrder = await Order.update(
+      {
+        shipped: true
+      },
+      {
+        where: {userId: userId, shipped: false}
+      }
+    )
+    res.send(updatedOrder)
+  } catch (error) {
+    next(error)
+  }
+})

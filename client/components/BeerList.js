@@ -82,7 +82,7 @@ class BeerList extends Component {
         </Container>
         <Container fluid>
           <Row>
-            {beers.map(({imageUrl, name, brand, price}, i) => {
+            {beers.map(({id, imageUrl, name, brand, price}, i) => {
               return (
                 <Col sm={3} key={i}>
                   <Card>
@@ -91,9 +91,9 @@ class BeerList extends Component {
                       <CardTitle tag="h4">{name}</CardTitle>
                       <CardSubtitle>{brand}</CardSubtitle>
                       <CardText>Price: {price}</CardText>
-                      <Link to="/beers/singlebeer">
+                      <Link to={`/beers/${id}`}>
                         <Button color="secondary" size="lg">
-                          Buy
+                          View
                         </Button>
                       </Link>
                     </CardBody>

@@ -11,6 +11,7 @@ import {
   Main,
   About,
   Cart,
+  Registration,
   Contact
 } from './components'
 import {me} from './store'
@@ -32,12 +33,13 @@ class Routes extends Component {
         {/* <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} /> */}
         <Route exact path="/beers" component={BeerList} />
-        <Route exact path="/beers/singlebeer" component={SingleBeer} />
+        <Route exact path="/beers/:beerId" component={SingleBeer} />
         <Route exact path="/about" component={About} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/registration" component={Registration} />
 
         {/* {isLoggedIn && <Switch>
             {Routes placed here are only available after logging in }
