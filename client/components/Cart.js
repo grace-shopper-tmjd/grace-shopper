@@ -96,7 +96,7 @@ class Cart extends React.Component {
         >
           <div>
             <Button
-              right
+              center
               close
               className="custom-close-button"
               onClick={this.props.closeCart}

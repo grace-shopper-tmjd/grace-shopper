@@ -17,10 +17,12 @@ const CartItem = props => (
         <Media left heading>
           {props.order.beer.name}
         </Media>
-        <div>{props.order.beer.price}</div>
-        <div>{props.order.beer.quantity}</div>
-        <div>{props.order.beer.packSize}</div>
-        <div>{props.order.beer.beerStyle.name}</div>
+        <div>
+          <div>{props.order.beer.price}</div>
+          <div>{props.order.beer.quantity}</div>
+          <div>{props.order.beer.packSize}</div>
+          <div>{props.order.beer.beerStyle.name}</div>
+        </div>
       </Media>
     </Media>
 
