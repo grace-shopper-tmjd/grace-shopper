@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
-import {logout} from '../store'
+// import {logout} from '../store'
 import {
   Collapse,
   Navbar,
@@ -182,21 +182,21 @@ class NavBar extends Component {
   }
 }
 
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
+// const mapState = state => {
+//   return {
+//     isLoggedIn: !!state.user.id
+//   }
+// }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+// const mapDispatch = dispatch => {
+//   return {
+//     handleClick() {
+//       dispatch(logout())
+//     }
+//   }
+// }
 
-export default connect(mapState, mapDispatch)(NavBar)
+export default NavBar
 
 /**
  * PROP TYPES
