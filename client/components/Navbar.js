@@ -97,6 +97,12 @@ class NavBar extends Component {
               </NavItem>
 
               <NavItem>
+                <NavLink style={linkStyle} to="/login">
+                  Login
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
                 <NavLink style={linkStyle} to="/signup">
                   Sign Up
                 </NavLink>
