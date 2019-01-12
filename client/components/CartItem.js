@@ -13,31 +13,21 @@ const CartItem = props => (
         />
       </Media>
 
-      <Media left>
+      <Media className="ml-4" left>
         <Media left heading>
           {props.order.beer.name}
         </Media>
-        <div>
+        <Media body>
           <div>{props.order.beer.price}</div>
           <div>{props.order.beer.quantity}</div>
           <div>{props.order.beer.packSize}</div>
           <div>{props.order.beer.beerStyle.name}</div>
-        </div>
-      </Media>
-    </Media>
-
-    <Button color="danger">X</Button>
-    {/* <Media>
-      <Media left href="#">
-        <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
-      </Media>
-      <Media body>
-        <Media heading>
-          Media heading
         </Media>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
       </Media>
-    </Media> */}
+      <Button className="ml-2" color="danger">
+        X
+      </Button>
+    </Media>
   </ListGroupItem>
 )
 
