@@ -37,3 +37,18 @@ router.post('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const array = await User.update(req.body, {
+      returning: true,
+      where: {
+        id: req.params.id
+      }
+    })
+    throwNotFoundIfFalsey(array[0])
+    res.json(array[1])
+  } catch (err) {
+    next(err)
+  }
+})
