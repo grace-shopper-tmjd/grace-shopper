@@ -140,7 +140,7 @@ class Checkout extends Component {
           </tbody>
         </Table>
 
-        <Button>Checkout</Button>
+        <Button>Purchase</Button>
       </Container>
     )
   }
