@@ -109,7 +109,6 @@ class BeerList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     beers: state.beers.beers
   }

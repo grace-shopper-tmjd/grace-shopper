@@ -72,14 +72,12 @@ class NavBar extends Component {
   }
 
   toggleBeerStyle() {
-    console.log('toggling beer style')
     this.setState({
       beerStyle: !this.state.beerStyle
     })
   }
 
   togglePackSize() {
-    console.log('toggling pack size')
     this.setState({
       packSize: !this.state.packSize
     })
