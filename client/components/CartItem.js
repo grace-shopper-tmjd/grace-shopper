@@ -21,8 +21,6 @@ const CartItem = props => (
           <div>Price: {props.order.beer.price}</div>
           <div>
             <Button
-              // onClick={() => props.deleteBeerFromCart(props.order.beer)}
-              // bsStyle="default"
               style={{
                 size: '10px',
                 marginRight: '5px',
@@ -30,7 +28,6 @@ const CartItem = props => (
                 backgroundColor: 'white',
                 borderRadius: '50%'
               }}
-              // bsSize="xsmall"
             >
               -
             </Button>
@@ -43,7 +40,6 @@ const CartItem = props => (
                 backgroundColor: 'white',
                 borderRadius: '50%'
               }}
-              // bsSize="xsmall"
             >
               +
             </Button>
@@ -52,7 +48,11 @@ const CartItem = props => (
           <div>Beer style: {props.order.beer.beerStyle.name}</div>
         </Media>
       </Media>
-      <Button className="ml-2" color="danger">
+      <Button
+        onClick={() => props.deleteBeer(props.order.id)}
+        className="ml-2"
+        color="danger"
+      >
         X
       </Button>
     </Media>

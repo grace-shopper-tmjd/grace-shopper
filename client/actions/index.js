@@ -5,7 +5,8 @@ import {
   GET_AN_ORDER,
   ADD_TO_CART,
   GET_USER_CART,
-  UPDATE_ITEM_TO_CART
+  UPDATE_ITEM_TO_CART,
+  DELETE_ITEM_FROM_CART
 } from './types'
 
 import axios from 'axios'
@@ -68,6 +69,13 @@ export const updatedItemToCart = beer => {
   }
 }
 
+export const deletedItemFromCart = id => {
+  return {
+    type: DELETE_ITEM_FROM_CART,
+    id
+  }
+}
+
 // ------------------ Thunk Creators -------------------
 // =====================================================
 // =====================================================
@@ -122,3 +130,12 @@ export const addToCart = item => async dispatch => {
 //   const action = updatedItemToCart(data)
 //   dispatch(action)
 // }
+
+export const deleteFromCart = id => async dispatch => {
+  try {
+    await axios.delete(`/api/orders/3/cart/${id}`)
+    dispatch(deletedItemFromCart(id))
+  } catch (error) {
+    console.log(error)
+  }
+}

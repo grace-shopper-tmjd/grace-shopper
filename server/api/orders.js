@@ -76,12 +76,12 @@ router.get('/:userId/:orderId', async (req, res, next) => {
 
 //remove orderDetails from cart
 
-router.delete('/:userId/:orderId/:orderDetailsId', async (req, res, next) => {
-  const {orderDetailsId} = req.params
+router.delete('/:userId/cart/:id', async (req, res, next) => {
+  const {id} = req.params
   try {
     const deletedItem = await OrderDetails.destroy({
       where: {
-        id: orderDetailsId
+        id: id
       }
     })
     throwNotFoundIfFalsey(deletedItem)
