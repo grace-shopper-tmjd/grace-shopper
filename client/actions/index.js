@@ -5,7 +5,7 @@ import {
   GET_AN_ORDER,
   ADD_TO_CART,
   GET_USER_CART,
-  UPDATE_ITEM_TO_CART,
+  UPDATE_CART_ITEM,
   DELETE_ITEM_FROM_CART
 } from './types'
 
@@ -62,9 +62,9 @@ export const gotUserCartFromServer = userCart => {
   }
 }
 
-export const updatedItemToCart = beer => {
+export const updatedCartItem = beer => {
   return {
-    type: UPDATE_ITEM_TO_CART,
+    type: UPDATE_CART_ITEM,
     item: beer
   }
 }
@@ -123,13 +123,11 @@ export const addToCart = item => async dispatch => {
   dispatch(action)
 }
 
-// export const updateBeerToCart = item => async dispatch => {
-//   console.log('we r in thunk creator')
-//   console.log(typeof Number(item.id));
-//   const {data} = await axios.put(`/api/orders/updateCart/${Number(item.id)}`, item)
-//   const action = updatedItemToCart(data)
-//   dispatch(action)
-// }
+export const updateCartItem = item => async dispatch => {
+  const {data} = await axios.put(`/api/orders/3/cart/${item.id}`, item)
+  const action = updateCartItem(data)
+  dispatch(action)
+}
 
 export const deleteFromCart = id => async dispatch => {
   try {

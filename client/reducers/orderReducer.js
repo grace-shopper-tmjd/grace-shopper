@@ -3,7 +3,7 @@ import {
   GET_AN_ORDER,
   ADD_TO_CART,
   GET_USER_CART,
-  UPDATE_ITEM_TO_CART,
+  UPDATE_CART_ITEM,
   DELETE_ITEM_FROM_CART
 } from '../actions/types'
 let initialState = {
@@ -40,13 +40,13 @@ export default function(state = initialState, action) {
         cartItems: state.cartItems.filter(item => item.id !== action.id)
       }
 
-    // case UPDATE_ITEM_TO_CART:
-    //   return {
-    //     ...state,
-    //     cartItems: state.cartItems.map(cartItem => (
-    //       action.item.id === cartItem.id ? action.item.quantity + 1 : cartItem
-    //     ))
-    // }
+    case UPDATE_CART_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.map(
+          cartItem => (action.item.id === cartItem.id ? action.item : cartItem)
+        )
+      }
     default:
       return state
   }

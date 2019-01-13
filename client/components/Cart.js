@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import {connect} from 'react-redux'
 import {CartItem} from './index'
-import {fetchUserCart, updateBeerToCart, deleteFromCart} from '../actions/index'
+import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -22,8 +22,6 @@ class Cart extends React.Component {
     this.state = {
       cartItems: []
     }
-    // this.addBeerToCart = this.addBeerToCart.bind(this);
-    // this.deleteBeerFromCart = this.deleteBeerFromCart.bind(this);
   }
 
   async componentDidMount() {
@@ -64,6 +62,7 @@ class Cart extends React.Component {
                   key={order.id}
                   order={order}
                   deleteBeer={this.props.deleteBeer}
+                  updateQuantity={this.props.updateQuantity}
                 />
               ))}
             </ListGroup>
@@ -91,7 +90,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getUserCart: () => dispatch(fetchUserCart()),
-    deleteBeer: id => dispatch(deleteFromCart(id))
+    deleteBeer: id => dispatch(deleteFromCart(id)),
+    updateQuantity: item => dispatch(updateCartItem(item))
   }
 }
 

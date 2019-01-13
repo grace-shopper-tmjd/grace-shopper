@@ -119,18 +119,20 @@ router.post('/:userId/cart/add', async (req, res, next) => {
 
 //update quantity of an order detail
 
-router.put('/updateCart/:cartItem', async (req, res, next) => {
-  const cartItemId = req.params.cartItem
+router.put('/:userId/cart/:id', async (req, res, next) => {
+  const id = req.params.id
   try {
-    const updatedOrderDetail = await OrderDetails.update(
+    const [numberOfAffectedRows, affectedRows] = await OrderDetails.update(
       {
         quantity: req.body.quantity
       },
       {
-        where: {id: cartItemId}
+        returning: true,
+        where: {id: id}
       }
     )
-    res.send(updatedOrderDetail)
+    console.log(affectedRows)
+    res.send(affectedRows)
   } catch (error) {
     next(error)
   }

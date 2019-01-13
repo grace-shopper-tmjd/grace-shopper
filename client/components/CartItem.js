@@ -21,6 +21,12 @@ const CartItem = props => (
           <div>Price: {props.order.beer.price}</div>
           <div>
             <Button
+              onClick={() =>
+                props.updateQuantity({
+                  ...props.order,
+                  quantity: props.order.quantity - 1
+                })
+              }
               style={{
                 size: '10px',
                 marginRight: '5px',
@@ -33,7 +39,12 @@ const CartItem = props => (
             </Button>
             {props.order.quantity}
             <Button
-              // onClick={() => props.addBeerToCart(props.order.beer)}
+              onClick={() =>
+                props.updateQuantity({
+                  ...props.order,
+                  quantity: props.order.quantity + 1
+                })
+              }
               style={{
                 marginLeft: '5px',
                 color: 'black',
@@ -48,11 +59,7 @@ const CartItem = props => (
           <div>Beer style: {props.order.beer.beerStyle.name}</div>
         </Media>
       </Media>
-      <Button
-        onClick={() => props.deleteBeer(props.order.id)}
-        className="ml-2"
-        color="danger"
-      >
+      <Button className="ml-2" color="danger">
         X
       </Button>
     </Media>
