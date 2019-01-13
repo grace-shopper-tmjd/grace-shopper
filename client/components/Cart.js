@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 import {connect} from 'react-redux'
 import {CartItem} from './index'
-import {fetchUserCart, updateBeerToCart} from '../actions/index'
+import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -22,8 +22,6 @@ class Cart extends React.Component {
     this.state = {
       cartItems: []
     }
-    // this.addBeerToCart = this.addBeerToCart.bind(this);
-    // this.deleteBeerFromCart = this.deleteBeerFromCart.bind(this);
   }
 
   async componentDidMount() {
@@ -35,30 +33,6 @@ class Cart extends React.Component {
       })
     }
   }
-
-  // addBeerToCart(beer) {
-  //   // const alreadyInCart = this.state.cartItems.findIndex(item => item.id === beer.id);
-  //   // if(alreadyInCart === -1) {
-  //   //   const updatedItems = this.state.cartItems.concat({
-  //   //       ...beer, //spread all of the individual properties of brew object
-  //   //       quantity: 1 // add a new propery to the end
-  //   //   });
-  //   //   this.setState({ cartItems: updatedItems }, () => this.props.addBeer());
-  //   // } else {
-  //   //     // copy the cartItems array
-  //   //     const updatedItems = [...this.state.cartItems];
-  //   //     updatedItems[alreadyInCart].quantity += 1;
-  //   //     this.setState({ cartItems: updatedItems }, () => this.props.addBeer();
-  //   // }
-  //   this.props.addBeer(beer)
-  // }
-
-  // deleteBeerFromCart(beerToDeleteId) {
-  //   // const filteredItems = this.state.cartItems.filter(item => item.id !== beerToDeleteId);
-  //   // this.setState({
-  //   //     cartItems: filteredItems
-  //   // });
-  // }
 
   render() {
     return (
@@ -84,8 +58,12 @@ class Cart extends React.Component {
           <ModalBody>
             <ListGroup>
               {this.props.cartItems.map(order => (
-                <CartItem key={order.id} order={order} />
-                // <CartItem key={order.id} order={order} addBeerToCart={this.addBeerToCart} deleteBeerFromCart={this.deleteBeerFromCart} />
+                <CartItem
+                  key={order.id}
+                  order={order}
+                  deleteBeer={this.props.deleteBeer}
+                  updateQuantity={this.props.updateQuantity}
+                />
               ))}
             </ListGroup>
           </ModalBody>
@@ -111,8 +89,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserCart: () => dispatch(fetchUserCart())
-    // addBeer: beer => dispatch(updateBeerToCart(beer))
+    getUserCart: () => dispatch(fetchUserCart()),
+    deleteBeer: id => dispatch(deleteFromCart(id)),
+    updateQuantity: item => dispatch(updateCartItem(item))
   }
 }
 

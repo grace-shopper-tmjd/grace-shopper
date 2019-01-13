@@ -20,16 +20,12 @@ class SingleBeer extends Component {
       beer: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.addBeerToCart = this.addBeerToCart.bind(this);
   }
 
   componentDidMount() {
     this.props.getSingleBeer(this.props.match.params.beerId)
   }
 
-  // addBeerToCart(beer) {
-
-  // }
   handleSubmit() {
     this.props.addSingleBeer({
       beerId: this.props.beer.id,

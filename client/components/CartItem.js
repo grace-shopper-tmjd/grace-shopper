@@ -21,8 +21,12 @@ const CartItem = props => (
           <div>Price: {props.order.beer.price}</div>
           <div>
             <Button
-              // onClick={() => props.deleteBeerFromCart(props.order.beer)}
-              // bsStyle="default"
+              onClick={() =>
+                props.updateQuantity({
+                  ...props.order,
+                  quantity: props.order.quantity - 1
+                })
+              }
               style={{
                 size: '10px',
                 marginRight: '5px',
@@ -30,20 +34,23 @@ const CartItem = props => (
                 backgroundColor: 'white',
                 borderRadius: '50%'
               }}
-              // bsSize="xsmall"
             >
               -
             </Button>
             {props.order.quantity}
             <Button
-              // onClick={() => props.addBeerToCart(props.order.beer)}
+              onClick={() =>
+                props.updateQuantity({
+                  ...props.order,
+                  quantity: props.order.quantity + 1
+                })
+              }
               style={{
                 marginLeft: '5px',
                 color: 'black',
                 backgroundColor: 'white',
                 borderRadius: '50%'
               }}
-              // bsSize="xsmall"
             >
               +
             </Button>
