@@ -122,7 +122,7 @@ router.post('/:userId/cart/add', async (req, res, next) => {
 router.put('/:userId/cart/:id', async (req, res, next) => {
   const id = req.params.id
   try {
-    const [numberOfAffectedRows, affectedRows] = await OrderDetails.update(
+    await OrderDetails.update(
       {
         quantity: req.body.quantity
       },
@@ -131,8 +131,13 @@ router.put('/:userId/cart/:id', async (req, res, next) => {
         where: {id: id}
       }
     )
-    console.log(affectedRows)
-    res.send(affectedRows)
+
+    const item = await OrderDetails.findOne({
+      where: {id: id},
+      include: [{model: Beer, include: [BeerStyle]}]
+    })
+
+    res.send(item)
   } catch (error) {
     next(error)
   }

@@ -125,7 +125,7 @@ export const addToCart = item => async dispatch => {
 
 export const updateCartItem = item => async dispatch => {
   const {data} = await axios.put(`/api/orders/3/cart/${item.id}`, item)
-  const action = updateCartItem(data)
+  const action = updatedCartItem(data)
   dispatch(action)
 }
 
