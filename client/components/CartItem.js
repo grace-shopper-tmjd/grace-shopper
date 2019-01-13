@@ -59,7 +59,11 @@ const CartItem = props => (
           <div>Beer style: {props.order.beer.beerStyle.name}</div>
         </Media>
       </Media>
-      <Button className="ml-2" color="danger">
+      <Button
+        onClick={() => props.deleteBeer(props.order.id)}
+        className="ml-2"
+        color="danger"
+      >
         X
       </Button>
     </Media>
