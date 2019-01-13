@@ -68,7 +68,11 @@ class Cart extends React.Component {
             </ListGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.props.closeCart}>
+            <Button
+              href="/checkout"
+              color="success"
+              onClick={this.props.closeCart}
+            >
               Check out
             </Button>
             <Button color="danger" onClick={this.props.closeCart}>

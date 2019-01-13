@@ -18,7 +18,9 @@ const CartItem = props => (
           {props.order.beer.name}
         </Media>
         <Media body>
-          <div>Price: {props.order.beer.price}</div>
+          <div>
+            Price: {(props.order.beer.price * props.order.quantity).toFixed(2)}
+          </div>
           <div>
             <Button
               onClick={() =>
