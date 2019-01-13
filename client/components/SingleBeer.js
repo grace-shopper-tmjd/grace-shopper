@@ -16,17 +16,20 @@ import {fetchSingleBeer, addToCart} from '../actions/index'
 class SingleBeer extends Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   beerId: 0,
-    //   quantity: 1,
-    //   price: 1
-    // }
+    this.state = {
+      beer: {}
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.addBeerToCart = this.addBeerToCart.bind(this);
   }
 
   componentDidMount() {
     this.props.getSingleBeer(this.props.match.params.beerId)
   }
+
+  // addBeerToCart(beer) {
+
+  // }
   handleSubmit() {
     this.props.addSingleBeer({
       beerId: this.props.beer.id,

@@ -4,7 +4,8 @@ import {
   GET_ALL_ORDERS,
   GET_AN_ORDER,
   ADD_TO_CART,
-  GET_USER_CART
+  GET_USER_CART,
+  UPDATE_ITEM_TO_CART
 } from './types'
 
 import axios from 'axios'
@@ -60,6 +61,13 @@ export const gotUserCartFromServer = userCart => {
   }
 }
 
+export const updatedItemToCart = beer => {
+  return {
+    type: UPDATE_ITEM_TO_CART,
+    item: beer
+  }
+}
+
 // ------------------ Thunk Creators -------------------
 // =====================================================
 // =====================================================
@@ -90,18 +98,27 @@ export const fetchAllOrders = () => async dispatch => {
   dispatch(action)
 }
 
+// Thunk Creator - CART
+// ===========================================
+
+// need user id
+// add try and catch block
+export const fetchUserCart = () => async dispatch => {
+  const {data} = await axios.get(`/api/orders/3/cart`)
+  const action = gotUserCartFromServer(data)
+  dispatch(action)
+}
+
 export const addToCart = item => async dispatch => {
   const {data} = await axios.post('/api/orders/3/cart/add', item)
   const action = addedItemToCart(data)
   dispatch(action)
 }
 
-// Thunk Creator - CART
-// ===========================================
-
-// need user id
-export const fetchUserCart = () => async dispatch => {
-  const {data} = await axios.get(`/api/orders/3/cart`)
-  const action = gotUserCartFromServer(data)
-  dispatch(action)
-}
+// export const updateBeerToCart = item => async dispatch => {
+//   console.log('we r in thunk creator')
+//   console.log(typeof Number(item.id));
+//   const {data} = await axios.put(`/api/orders/updateCart/${Number(item.id)}`, item)
+//   const action = updatedItemToCart(data)
+//   dispatch(action)
+// }
