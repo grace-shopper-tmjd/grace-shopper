@@ -1,7 +1,13 @@
-import {GET_ALL_ORDERS, GET_AN_ORDER} from '../actions/types'
+import {
+  GET_ALL_ORDERS,
+  GET_AN_ORDER,
+  ADD_TO_CART,
+  GET_USER_CART
+} from '../actions/types'
 let initialState = {
   orders: [],
-  selectedOrder: {}
+  selectedOrder: {},
+  cartItems: []
 }
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -14,6 +20,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         selectedOrder: action.selectedOrder
+      }
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, ...action.item]
+      }
+    case GET_USER_CART:
+      return {
+        ...state,
+        cartItems: action.selectedCart
       }
     default:
       return state

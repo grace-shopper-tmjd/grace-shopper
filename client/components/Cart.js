@@ -294,7 +294,9 @@ import {
   ModalFooter,
   ListGroup
 } from 'reactstrap'
+import {connect} from 'react-redux'
 import {CartItem} from './index'
+import {fetchUserCart} from '../actions/index'
 
 class Cart extends React.Component {
   constructor(props) {
@@ -302,6 +304,10 @@ class Cart extends React.Component {
     this.state = {
       cartItems: []
     }
+  }
+
+  componentDidMount() {
+    this.props.getUserCart()
   }
 
   render() {
@@ -327,7 +333,9 @@ class Cart extends React.Component {
           </ModalHeader>
           <ModalBody>
             <ListGroup>
-              {orders.map(order => <CartItem key={order.id} order={order} />)}
+              {this.props.cartItems.map(order => (
+                <CartItem key={order.id} order={order} />
+              ))}
             </ListGroup>
           </ModalBody>
           <ModalFooter>
@@ -344,4 +352,16 @@ class Cart extends React.Component {
   }
 }
 
-export default Cart
+const mapStateToProps = state => {
+  return {
+    cartItems: state.orders.cartItems
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserCart: () => dispatch(fetchUserCart())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

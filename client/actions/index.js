@@ -1,4 +1,11 @@
-import {GET_ALL_BEERS, GET_A_BEER, GET_ALL_ORDERS, GET_AN_ORDER} from './types'
+import {
+  GET_ALL_BEERS,
+  GET_A_BEER,
+  GET_ALL_ORDERS,
+  GET_AN_ORDER,
+  ADD_TO_CART,
+  GET_USER_CART
+} from './types'
 
 import axios from 'axios'
 
@@ -38,6 +45,21 @@ export const gotSingleOrderFromServer = singleOrder => {
   }
 }
 
+// Action Creator - CART
+export const addedItemToCart = beer => {
+  return {
+    type: ADD_TO_CART,
+    item: beer
+  }
+}
+
+export const gotUserCartFromServer = userCart => {
+  return {
+    type: GET_USER_CART,
+    selectedCart: userCart
+  }
+}
+
 // ------------------ Thunk Creators -------------------
 // =====================================================
 // =====================================================
@@ -65,5 +87,21 @@ export const fetchAllOrders = () => async dispatch => {
   const {data} = await axios.get('/api/orders')
   const orders = data
   const action = gotAllOrdersFromServer(orders)
+  dispatch(action)
+}
+
+export const addToCart = item => async dispatch => {
+  const {data} = await axios.post('/api/orders/3/cart/add', item)
+  const action = addedItemToCart(data)
+  dispatch(action)
+}
+
+// Thunk Creator - CART
+// ===========================================
+
+// need user id
+export const fetchUserCart = () => async dispatch => {
+  const {data} = await axios.get(`/api/orders/3/cart`)
+  const action = gotUserCartFromServer(data)
   dispatch(action)
 }
