@@ -24,3 +24,7 @@ form div {
   display: flex;
   justify-content: space-around;
 }
+
+.allBeerImages {
+  max-height: 75%;
+}
