@@ -13,10 +13,10 @@ import {
 } from 'reactstrap'
 
 const LoginForm = props => {
-  const {handleSubmit, handleChange} = props
+  const {handleSubmit, handleChange, formName, error} = props
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} formName={formName}>
         <h2>Sign In</h2>
         <Col>
           <FormGroup>
@@ -41,8 +41,10 @@ const LoginForm = props => {
           </FormGroup>
         </Col>
         <Button className="m-2">Login</Button>
-        {/* <Button className="m-2">Login With Google</Button>
-						<Button className="m-2">Sign Up</Button> */}
+        <Button className="m-2">Login With Google</Button>
+        <Button className="m-2" href="/registration">
+          Sign Up
+        </Button>
       </Form>
     </Container>
   )
