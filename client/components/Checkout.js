@@ -30,11 +30,9 @@ class Checkout extends Component {
       cartItems: [],
       subtotal: 0
     }
-    this.findSubtotal = this.findSubtotal.bind(this)
   }
 
   async componentDidMount() {
-    this.findSubtotal()
     await this.props.getUserCart()
     const userCart = this.props.cartItems
     if (userCart) {
@@ -44,19 +42,16 @@ class Checkout extends Component {
     }
   }
 
-  findSubtotal() {
-    let total = 0
-    this.state.cartItems.forEach(item => (total += Number(item.price)))
-    this.setState({
-      subtotal: total
-    })
-  }
-
   render() {
     const cartItems = this.state.cartItems
     let total = 0
-    if (cartItems.length) cartItems.forEach(item => (total += item.price))
+    let orderId
+    if (cartItems.length) {
+      cartItems.forEach(item => (total += item.price))
+      orderId = cartItems[0].orderId
+    }
     total = total.toFixed(2)
+
     return (
       <Container>
         <Table borderless>
@@ -143,7 +138,7 @@ class Checkout extends Component {
           </tbody>
         </Table>
 
-        <Button>Purchase</Button>
+        <Button href={`/order/${orderId}/confirmation`}>Purchase</Button>
       </Container>
     )
   }

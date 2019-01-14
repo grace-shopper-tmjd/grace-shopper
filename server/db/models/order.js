@@ -10,7 +10,7 @@ const Order = db.define('order', {
   },
   orderDate: {
     type: Sequelize.DATE,
-    default: new Date()
+    defaultValue: new Date()
   },
   shipped: {
     type: Sequelize.BOOLEAN,
