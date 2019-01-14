@@ -15,7 +15,8 @@ import {
   Contact,
   Checkout,
   OrderHistory,
-  Order
+  Order,
+  CheckoutConfirmation
 } from './components'
 import {me} from './actions/index'
 
@@ -46,6 +47,11 @@ class Routes extends Component {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/orderhistory/:userId" component={OrderHistory} />
         <Route exact path="/order/:orderId" component={Order} />
+        <Route
+          exact
+          path="/order/:orderId/confirmation"
+          component={CheckoutConfirmation}
+        />
         <Route exact path="/" component={Main} />
         {isLoggedIn && (
           <Switch>
