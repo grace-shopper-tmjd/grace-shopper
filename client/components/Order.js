@@ -34,8 +34,8 @@ class Order extends Component {
           {this.props.orderDetails.map(({beerId, quantity, price}, i) => {
             return (
               <tr key={i}>
-                <td>Beer Id's Name</td>
-                <td>Beer Id's Pack Size</td>
+                <td>Beer Ids Name</td>
+                <td>Beer Ids Pack Size</td>
                 <td>{quantity}</td>
                 <td>{price}</td>
                 <td>Total</td>
