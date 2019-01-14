@@ -1,5 +1,5 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
-var divStyle = {
+const divStyle = {
   padding: '20px'
 }
 

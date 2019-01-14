@@ -47,13 +47,16 @@ class Checkout extends Component {
   findSubtotal() {
     let total = 0
     this.state.cartItems.forEach(item => (total += Number(item.price)))
-    console.log(total)
     this.setState({
       subtotal: total
     })
   }
 
   render() {
+    const cartItems = this.state.cartItems
+    let total = 0
+    if (cartItems.length) cartItems.forEach(item => (total += item.price))
+    total = total.toFixed(2)
     return (
       <Container>
         <Table borderless>
@@ -123,7 +126,7 @@ class Checkout extends Component {
             <tr>
               <th>3</th>
               <th>Review Items</th>
-              <td>Subtotal: ${this.state.subtotal}</td>
+              <td>Total: ${total}</td>
               <td>
                 <CardGroup>
                   {this.props.cartItems.map(order => (
