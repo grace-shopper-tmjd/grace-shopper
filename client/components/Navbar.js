@@ -14,8 +14,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button,
-  Dropdown
+  Button
 } from 'reactstrap'
 import Cart from './Cart'
 
@@ -83,6 +82,28 @@ class NavBar extends Component {
     })
   }
 
+  renderLoginContent() {
+    console.log('renderlogincontent')
+    console.log(this.props.isLoggedIn)
+    if (this.props.isLoggedIn) {
+      return (
+        <NavItem>
+          <NavLink style={linkStyle} to="/logout">
+            Logout
+          </NavLink>
+        </NavItem>
+      )
+    } else {
+      return (
+        <NavItem>
+          <NavLink style={linkStyle} to="/login">
+            Login
+          </NavLink>
+        </NavItem>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -107,7 +128,9 @@ class NavBar extends Component {
                   Beers
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem href="/beers">All Beers</DropdownItem>
+                  <DropdownItem tag={NavLink} to="/beers">
+                    All Beers
+                  </DropdownItem>
                   <DropdownItem>By Pack Size</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>By Style</DropdownItem>
@@ -133,11 +156,7 @@ class NavBar extends Component {
               </NavItem>
 
               {/* link to login page */}
-              <NavItem>
-                <NavLink style={linkStyle} to="/login">
-                  Login
-                </NavLink>
-              </NavItem>
+              {this.renderLoginContent()}
               {/* end of navbar */}
             </Nav>
           </Collapse>
@@ -147,11 +166,11 @@ class NavBar extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     isLoggedIn: !!state.user.id
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    isLoggedin: !!state.user.id
+  }
+}
 
 // const mapDispatch = dispatch => {
 //   return {
@@ -161,12 +180,12 @@ class NavBar extends Component {
 //   }
 // }
 
-export default NavBar
+export default connect(mapStateToProps)(NavBar)
 
 /**
  * PROP TYPES
  */
 // Navbar.propTypes = {
-//   handleClick: PropTypes.func.isRequired,
+// //   handleClick: PropTypes.func.isRequired,
 //   isLoggedIn: PropTypes.bool.isRequired
 // }
