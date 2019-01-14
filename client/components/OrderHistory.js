@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
+import {Link} from 'react-router-dom'
 import {Table} from 'reactstrap'
 
 import {fetchAllOrders} from '../actions/index'
@@ -33,7 +33,9 @@ class OrderHistory extends Component {
             {this.props.orders.map(({orderNumber, orderDate}, i) => {
               return (
                 <tr key={i}>
-                  <th scope="row">{orderNumber}</th>
+                  <Link to={`/orders/${id}`}>
+                    <th scope="row">{orderNumber}</th>
+                  </Link>
                   <td>{orderDate}</td>
                 </tr>
               )
