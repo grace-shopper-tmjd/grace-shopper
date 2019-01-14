@@ -8,7 +8,8 @@ import {
   UPDATE_CART_ITEM,
   DELETE_ITEM_FROM_CART,
   GET_USER,
-  REMOVE_USER
+  REMOVE_USER,
+  CREATE_USER
 } from './types'
 
 import axios from 'axios'
@@ -83,6 +84,12 @@ export const deletedItemFromCart = id => {
 
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const createdUserForServer = user => {
+  return {
+    type: CREATE_USER,
+    user
+  }
+}
 
 // ------------------ Thunk Creators -------------------
 // =====================================================
@@ -187,5 +194,18 @@ export const logout = () => async dispatch => {
     // history.push('/login')
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const createOneUser = (user, history) => async dispatch => {
+  console.log('created User', user)
+  try {
+    const {data} = await axios.post('/api/users/auth/registration', user)
+    const newUser = data
+    const action = createdUserForServer(newUser)
+    history.push('/home')
+    dispatch(action)
+  } catch (error) {
+    console.error(error)
   }
 }

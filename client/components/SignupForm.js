@@ -124,4 +124,12 @@ const SignupForm = () => {
   )
 }
 
+const mapSignup = state => {
+  return {
+    name: 'signup',
+    displayName: 'Sign Up',
+    error: state.user.error
+  }
+}
+
 export default SignupForm
