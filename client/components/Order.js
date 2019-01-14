@@ -1,6 +1,23 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
 import {Table} from 'reactstrap'
-export default class Order extends React.Component {
+
+import {fetchSingleOrder} from '../actions/index'
+
+class Order extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      orderDetails: []
+    }
+  }
+
+  componentDidMount() {
+    this.props.getSingleOrder()
+  }
+
   render() {
     return (
       <Table>
@@ -14,36 +31,33 @@ export default class Order extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Lagunitas Pils</td>
-            <td>6 pack</td>
-            <td>$3.99</td>
-            <td />
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Lagunitas DayTime</td>
-            <td>4 pack</td>
-            <td>$3.99</td>
-            <td />
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>'Founders All Day IPA'</td>
-            <td>1 pack</td>
-            <td>$3.99</td>
-            <td />
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td />
-            <td />
-            <td />
-            <td>$11.97</td>
-          </tr>
+          {this.props.orderDetails.map(({beerId, quantity, price}, i) => {
+            return (
+              <tr key={i}>
+                <td>Beer Ids Name</td>
+                <td>Beer Ids Pack Size</td>
+                <td>{quantity}</td>
+                <td>{price}</td>
+                <td>Total</td>
+              </tr>
+            )
+          })}
         </tbody>
       </Table>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    orders: state.orderDetails.orderDetails
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getSingleOrder: () => dispatch(fetchSingleOrder())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Order)

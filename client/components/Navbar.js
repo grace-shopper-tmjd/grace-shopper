@@ -128,7 +128,9 @@ class NavBar extends Component {
                   Beers
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem href="/beers">All Beers</DropdownItem>
+                  <DropdownItem tag={NavLink} to="/beers">
+                    All Beers
+                  </DropdownItem>
                   <DropdownItem>By Pack Size</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>By Style</DropdownItem>
