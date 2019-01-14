@@ -1,16 +1,15 @@
 import {GET_USER, REMOVE_USER} from '../actions/types'
-const initialState = {
-  defaultUser: {}
-}
-export default function(state = initialState, action) {
+/**
+ * INITIAL STATE
+ */
+const defaultUser = {}
+
+export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return {
-        ...state,
-        defaultUser: action.user
-      }
+      return action.user
     case REMOVE_USER:
-      return initialState
+      return defaultUser
     default:
       return state
   }
