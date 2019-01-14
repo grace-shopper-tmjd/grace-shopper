@@ -136,7 +136,6 @@ router.put('/:userId/cart/:id', async (req, res, next) => {
       where: {id: id},
       include: [{model: Beer, include: [BeerStyle]}]
     })
-
     res.send(item)
   } catch (error) {
     next(error)

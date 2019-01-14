@@ -404,61 +404,61 @@ const orderDetails = [
     beerId: 1,
     orderId: 9,
     quantity: 15,
-    price: 47.42
+    price: 329.85
   },
   {
     beerId: 2,
     orderId: 8,
     quantity: 10,
-    price: 91.16
+    price: 219.9
   },
   {
     beerId: 1,
     orderId: 5,
     quantity: 9,
-    price: 29.06
+    price: 44.91
   },
   {
     beerId: 4,
     orderId: 7,
     quantity: 5,
-    price: 17.69
+    price: 24.95
   },
   {
     beerId: 4,
     orderId: 1,
     quantity: 30,
-    price: 2.64
+    price: 149.7
   },
   {
     beerId: 10,
     orderId: 3,
     quantity: 18,
-    price: 91.79
+    price: 71.82
   },
   {
     beerId: 9,
     orderId: 5,
     quantity: 7,
-    price: 73.38
+    price: 27.93
   },
   {
     beerId: 15,
     orderId: 1,
     quantity: 21,
-    price: 52.45
+    price: 83.79
   },
   {
     beerId: 8,
     orderId: 10,
     quantity: 7,
-    price: 80.06
+    price: 27.93
   },
   {
     beerId: 8,
     orderId: 1,
     quantity: 29,
-    price: 57.53
+    price: 115.71
   }
 ]
 

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
+import Cart from './Cart'
+import {me} from '../actions/index'
 // import {logout} from '../store'
 import {
   Collapse,
@@ -14,10 +16,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button,
-  Dropdown
+  Button
 } from 'reactstrap'
-import Cart from './Cart'
 
 const linkStyle = {
   color: 'rgba(0,0,0,.5)',
@@ -36,16 +36,10 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      cartOpen: false,
-      beerMenu: false,
-      beerStyle: false,
-      packSize: false
+      cartOpen: false
     }
     this.openCart = this.openCart.bind(this)
     this.closeCart = this.closeCart.bind(this)
-    this.toggleBeerMenu = this.toggleBeerMenu.bind(this)
-    this.toggleBeerStyle = this.toggleBeerStyle.bind(this)
-    this.togglePackSize = this.togglePackSize.bind(this)
   }
   toggle() {
     this.setState({
@@ -65,30 +59,15 @@ class NavBar extends Component {
     })
   }
 
-  toggleBeerMenu() {
-    this.setState({
-      beerMenu: !this.state.beerMenu
-    })
-  }
-
-  toggleBeerStyle() {
-    this.setState({
-      beerStyle: !this.state.beerStyle
-    })
-  }
-
-  togglePackSize() {
-    this.setState({
-      packSize: !this.state.packSize
-    })
-  }
-
   render() {
+    console.log('this.props.isLoggedIn', this.props.isLoggedIn)
+    console.log(this.props.userhey)
     return (
       <div>
         {this.state.cartOpen ? (
           <Cart closeCart={this.closeCart} isOpen={this.state.cartOpen} />
         ) : null}
+
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">Tops Hops</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -107,7 +86,9 @@ class NavBar extends Component {
                   Beers
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem href="/beers">All Beers</DropdownItem>
+                  <DropdownItem tag={NavLink} to="/beers">
+                    All Beers
+                  </DropdownItem>
                   <DropdownItem>By Pack Size</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>By Style</DropdownItem>
@@ -133,11 +114,19 @@ class NavBar extends Component {
               </NavItem>
 
               {/* link to login page */}
-              <NavItem>
-                <NavLink style={linkStyle} to="/login">
-                  Login
-                </NavLink>
-              </NavItem>
+              {this.props.isLoggedIn ? (
+                <NavItem>
+                  <NavLink style={linkStyle} to="/logout">
+                    Logout
+                  </NavLink>
+                </NavItem>
+              ) : (
+                <NavItem>
+                  <NavLink style={linkStyle} to="/login">
+                    Login
+                  </NavLink>
+                </NavItem>
+              )}
               {/* end of navbar */}
             </Nav>
           </Collapse>
@@ -147,11 +136,12 @@ class NavBar extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     isLoggedIn: !!state.user.id
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: !!state.user.id,
+    userhey: state.user
+  }
+}
 
 // const mapDispatch = dispatch => {
 //   return {
@@ -161,12 +151,18 @@ class NavBar extends Component {
 //   }
 // }
 
-export default NavBar
+const mapDispatch = dispatch => {
+  // return {
+  // 	loadInitialData: () => dispatch(me())
+  // }
+}
+
+export default connect(mapStateToProps)(NavBar)
 
 /**
  * PROP TYPES
  */
-// Navbar.propTypes = {
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }
+Navbar.propTypes = {
+  //   handleClick: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
+}
