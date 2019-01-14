@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import Cart from './Cart'
+import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
 import {me} from '../actions/index'
 // import {logout} from '../store'
 import {
@@ -36,7 +37,9 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      cartOpen: false
+      cartOpen: false,
+      cartItems: [],
+      cartQuantity: 0
     }
     this.openCart = this.openCart.bind(this)
     this.closeCart = this.closeCart.bind(this)
@@ -59,9 +62,19 @@ class NavBar extends Component {
     })
   }
 
+  async componentDidMount() {
+    await this.props.getUserCart()
+    const userCart = this.props.cartItems
+    console.log('got user cart', userCart)
+    if (userCart) {
+      this.setState({
+        cartItems: userCart,
+        cartQuantity: userCart.length
+      })
+    }
+  }
+
   render() {
-    console.log('this.props.isLoggedIn', this.props.isLoggedIn)
-    console.log(this.props.userhey)
     return (
       <div>
         {this.state.cartOpen ? (
@@ -109,7 +122,7 @@ class NavBar extends Component {
               {/* link to cart */}
               <NavItem>
                 <Button color="danger" onClick={this.openCart}>
-                  Cart
+                  Cart | {this.state.cartQuantity}
                 </Button>
               </NavItem>
 
@@ -139,25 +152,18 @@ class NavBar extends Component {
 const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
-    userhey: state.user
+    userhey: state.user,
+    cartItems: state.orders.cartItems
   }
 }
 
-// const mapDispatch = dispatch => {
-//   return {
-//     handleClick() {
-//       dispatch(logout())
-//     }
-//   }
-// }
-
-const mapDispatch = dispatch => {
-  // return {
-  // 	loadInitialData: () => dispatch(me())
-  // }
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserCart: () => dispatch(fetchUserCart())
+  }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
 
 /**
  * PROP TYPES
