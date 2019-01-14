@@ -30,7 +30,7 @@ class OrderHistory extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.orders.map(({orderNumber, orderDate, shipped}, i) => {
+            {this.props.orders.map(({orderNumber, orderDate}, i) => {
               return (
                 <tr key={i}>
                   <th scope="row">{orderNumber}</th>
