@@ -64,14 +64,6 @@ class NavBar extends Component {
 
   async componentDidMount() {
     await this.props.getUserCart()
-    const userCart = this.props.cartItems
-    console.log('got user cart', userCart)
-    if (userCart) {
-      this.setState({
-        cartItems: userCart,
-        cartQuantity: userCart.length
-      })
-    }
   }
 
   render() {
@@ -122,7 +114,7 @@ class NavBar extends Component {
               {/* link to cart */}
               <NavItem>
                 <Button color="danger" onClick={this.openCart}>
-                  Cart | {this.state.cartQuantity}
+                  Cart | {this.props.cartQuantity}
                 </Button>
               </NavItem>
 
@@ -153,7 +145,7 @@ const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     userhey: state.user,
-    cartItems: state.orders.cartItems
+    cartQuantity: state.orders.cartItems.length
   }
 }
 
