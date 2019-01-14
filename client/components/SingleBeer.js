@@ -30,7 +30,9 @@ class SingleBeer extends Component {
     this.props.addSingleBeer({
       beerId: this.props.beer.id,
       quantity: 10,
-      price: this.props.beer.price * 10
+      price: parseFloat(
+        Math.round(this.props.beer.price * 10 * 100) / 100
+      ).toFixed(2)
     })
   }
 
@@ -40,6 +42,7 @@ class SingleBeer extends Component {
         <Row>
           <Col lg={6}>
             <img
+              className="allBeerImages"
               width="100%"
               src={this.props.beer.imageUrl}
               alt="Responsive image"
@@ -51,12 +54,6 @@ class SingleBeer extends Component {
             <h5>Price: {this.props.beer.price}</h5>
             <Form>
               <FormGroup>
-                <Label for="exampleSelect">Pack Size</Label>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>4 PK</option>
-                  <option>6 PK</option>
-                </Input>
                 <Label for="exampleSelect">Quantity</Label>
                 <Input type="select" name="select" id="exampleSelect">
                   <option>1</option>
