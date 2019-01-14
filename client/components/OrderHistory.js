@@ -15,31 +15,32 @@ class OrderHistory extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllOrders()
+    this.props.getAllOrders(this.props.match.params.userId)
   }
 
   render() {
     return (
-      <Table>
-        <thead>
-          <tr>
-            <th>Order Number</th>
-            <th>Order Date</th>
-            <th>Shipping Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.orders.map(({orderNumber, orderDate, shipped}, i) => {
-            return (
-              <tr key={i}>
-                <th scope="row">{orderNumber}</th>
-                <td>{orderDate}</td>
-                <td>{shipped}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </Table>
+      <>
+        <h3>Shipped Orders</h3>
+        <Table>
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Order Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.orders.map(({orderNumber, orderDate}, i) => {
+              return (
+                <tr key={i}>
+                  <th scope="row">{orderNumber}</th>
+                  <td>{orderDate}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      </>
     )
   }
 }
@@ -52,7 +53,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllOrders: () => dispatch(fetchAllOrders())
+    getAllOrders: id => dispatch(fetchAllOrders(id))
   }
 }
 
