@@ -7,7 +7,6 @@ import {Table, Row, Col, Container} from 'reactstrap'
  * COMPONENT
  */
 export const UserHome = props => {
-  console.log('userhome props ', props)
   const {user} = props
   const {
     firstName,
