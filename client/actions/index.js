@@ -99,13 +99,19 @@ export const fetchSingleBeer = beerId => async dispatch => {
 // Thunk Creator - Order
 // ===========================================
 
-export const fetchAllOrders = () => async dispatch => {
-  const {data} = await axios.get('/api/orders')
+export const fetchAllOrders = userId => async dispatch => {
+  const {data} = await axios.get(`/api/orders/${userId}`)
   const orders = data
   const action = gotAllOrdersFromServer(orders)
   dispatch(action)
 }
 
+export const fetchSingleOrder = orderId => async dispatch => {
+  const {data} = await axios.get(`/api/orders/${orderId}`)
+  const order = data
+  const action = gotSingleOrderFromServer(order)
+  dispatch(action)
+}
 // Thunk Creator - CART
 // ===========================================
 
