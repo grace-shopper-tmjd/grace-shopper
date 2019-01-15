@@ -4,12 +4,14 @@ import {
   ADD_TO_CART,
   GET_USER_CART,
   UPDATE_CART_ITEM,
-  DELETE_ITEM_FROM_CART
+  DELETE_ITEM_FROM_CART,
+  GET_ORDER_DETAILS
 } from '../actions/types'
 let initialState = {
   orders: [],
   selectedOrder: {},
-  cartItems: []
+  cartItems: [],
+  orderDetails: []
 }
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -23,6 +25,14 @@ export default function(state = initialState, action) {
         ...state,
         selectedOrder: action.selectedOrder
       }
+
+    case GET_ORDER_DETAILS:
+      console.log('in reducer:', action.orderDetails)
+      return {
+        ...state,
+        orderDetails: action.orderDetails
+      }
+
     case ADD_TO_CART:
       return {
         ...state,

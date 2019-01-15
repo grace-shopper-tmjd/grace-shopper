@@ -10,6 +10,18 @@ const throwNotFoundIfFalsey = maybeFalsey => {
   }
 }
 
+//get order details for a specific order
+router.get('/details/:orderId', async (req, res, next) => {
+  try {
+    const orderDetails = await OrderDetails.findAll({
+      where: {orderId: req.params.orderId},
+      include: [{model: Beer, include: [BeerStyle]}]
+    })
+    res.send(orderDetails)
+  } catch (err) {
+    next(err)
+  }
+})
 //get all orders
 router.get('/', async (req, res, next) => {
   try {
@@ -73,20 +85,6 @@ router.get('/:userId/cart', async (req, res, next) => {
 //     next(err)
 //   }
 // })
-
-//get order history details for a specific order
-router.get('/:orderId', async (req, res, next) => {
-  const orderId = req.params.orderId
-  try {
-    const orderDetails = await OrderDetails.findAll({
-      where: {orderId: req.params.orderId},
-      include: [{model: Beer, include: [BeerStyle]}]
-    })
-    res.send(orderDetails)
-  } catch (err) {
-    next(err)
-  }
-})
 
 //remove orderDetails from cart
 

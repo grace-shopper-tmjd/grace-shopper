@@ -19,6 +19,7 @@ class OrderHistory extends Component {
   }
 
   render() {
+    console.log(this.props.orders)
     return (
       <>
         <h3>Shipped Orders</h3>
@@ -38,7 +39,7 @@ class OrderHistory extends Component {
                   <tr key={i}>
                     <th scope="row">{orderNumber}</th>
                     <td>{orderDate}</td>
-                    <td>{shipped}</td>
+                    <td>{shipped.toString()}</td>
                     <Link to={`/order/${id}`}>
                       <Button color="secondary" size="lg">
                         View

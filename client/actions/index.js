@@ -55,7 +55,7 @@ export const gotSingleOrderFromServer = singleOrder => {
 export const gotOrderDetails = orderDetails => {
   return {
     type: GET_ORDER_DETAILS,
-    orderDetails
+    orderDetails: orderDetails
   }
 }
 
@@ -129,15 +129,15 @@ export const fetchAllOrders = userId => async dispatch => {
   dispatch(action)
 }
 
-export const fetchSingleOrder = orderId => async dispatch => {
-  const {data} = await axios.get(`/api/orders/${orderId}`)
-  const order = data
-  const action = gotSingleOrderFromServer(order)
-  dispatch(action)
-}
+// export const fetchSingleOrder = orderId => async dispatch => {
+//   const {data} = await axios.get(`/api/orders/details/${orderId}`)
+//   const order = data
+//   const action = gotSingleOrderFromServer(order)
+//   dispatch(action)
+// }
 
 export const fetchOrderDetails = orderId => async dispatch => {
-  const {data} = await axios.get(`/api/orders/${orderId}`)
+  const {data} = await axios.get(`/api/orders/details/${orderId}`)
   const orderDetails = data
   const action = gotOrderDetails(orderDetails)
   dispatch(action)

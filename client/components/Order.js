@@ -8,66 +8,76 @@ var divStyle = {
 import React from 'react'
 import {ListGroup, Table} from 'reactstrap'
 import {connect} from 'react-redux'
-import {fetchSingleOrder} from '../actions/index'
+import {fetchOrderDetails} from '../actions/index'
 
 class Order extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      orderItems: []
-    }
+    // this.state = {
+    //   orderDetails: []
+    // }
   }
 
   async componentDidMount() {
-    await this.props.getSingleOrder(this.props.match.params.orderId)
-    await this.props.getSingleOrder(this.props.match.params.orderId)
+    await this.props.getOrderDetails(this.props.match.params.orderId)
     // const userCart = this.props.cartItems
-    if (this.props.orderItems) {
-      this.setState({
-        orderItems: this.props.orderItems
-      })
-    }
+    console.log('props:', this.props)
+    console.log('state:', this.state)
+    // if (this.props.orderDetails) {
+    //   this.setState({
+    //     orderDetails: this.props.orderDetails
+    //   })
+    // }
   }
 
   render() {
-    return (
-      <div>
-        <Table>
-          <thead>
-            <tr>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Beer</th>
-              <th>Beer Style</th>
-            </tr>
-          </thead>
+    if (!this.props.orderDetails) {
+      console.log('props:', this.props)
+      console.log('state:', this.state)
+      // console.log('param:', this.props.match.params.orderId)
+      return <div>Loading</div>
+    } else {
+      console.log(this.props.orderDetails)
+      return (
+        <div>
+          <Table>
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Beer</th>
+                <th>Beer Style</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {this.props.orderItems.map(({quantity, price, beerId}, i) => {
-              return (
-                <tr key={i}>
-                  <th scope="row">{quantity}</th>
-                  <td>{price}</td>
-                  <td>{beerId}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </Table>
-      </div>
-    )
+            <tbody>
+              {this.props.orderDetails.map(({quantity, price, beerId}, i) => {
+                return (
+                  <tr key={i}>
+                    <th scope="row">{quantity}</th>
+                    <td>{price}</td>
+                    <td>{beerId}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
+        </div>
+      )
+    }
   }
 }
 
 const mapStateToProps = state => {
+  console.log('mapstate state:', state)
   return {
-    orderItems: state.orderItems.orderItems
+    orderDetails: state.orders.orderDetails
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSingleOrder: orderId => dispatch(fetchSingleOrder(orderId))
+    getOrderDetails: orderId => dispatch(fetchOrderDetails(orderId))
   }
 }
 
