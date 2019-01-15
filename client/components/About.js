@@ -1,38 +1,3 @@
-// import React from 'react'
-// import {Media} from 'reactstrap'
-
-// const About = () => {
-//   return (
-
-//     <Media>
-
-//       <Media left href="#">
-//         <Media
-//           object
-//           src="https://images.unsplash.com/photo-1516458464372-eea4ab222b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=40"
-//           alt="Generic placeholder image"
-//         />
-//       </Media>
-//       <Media body>
-//         <Media heading>About Us</Media>
-//         <p>
-//         We are a group of beer heads that started this online store in 2019.
-//         After realizing the smaller independent breweries are not getting the attention they deserve, we've
-//         set out to bring a handful of hand selected craft beer to cater all beer drinkers.
-
-//         </p>
-//         <p>
-
-//         We have 3 profesionally trained beer connoisseurs, to help curate the beers that are sold on our webstore.
-//         </p>
-
-//       </Media>
-//     </Media>
-//   )
-// }
-
-// export default About
-
 import React, {Component} from 'react'
 import {
   Container,
@@ -79,17 +44,6 @@ export default class About extends Component {
     }
 
     return (
-      // <Container fluid>
-      //     <Card inverse>
-      //         <CardImg src="https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1789&q=80" alt="Card image cap" />
-      //         <CardImgOverlay>
-      //             <CardTitle>Tops Hops</CardTitle>
-      //             <CardText>This is a modified jumbotron that occupies the entire horizontal space of its parent.</CardText>
-      //             <Button>Explore Our Beers</Button>
-      //         </CardImgOverlay>
-
-      //     </Card>
-      // </Container>
       <Jumbotron fluid style={divStyle}>
         <div
           className="d-flex justify-content-center align-items-center flex-column"
