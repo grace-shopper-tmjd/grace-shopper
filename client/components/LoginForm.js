@@ -13,9 +13,11 @@ const LoginForm = props => {
     <Container>
       <AvForm onSubmit={handleSubmit} formName={formName}>
         <h2>Sign In</h2>
-        <Col>
-          <AvGroup>
-            <Label>Email</Label>
+        <AvGroup row>
+          <Label for="email" sm={2}>
+            Email
+          </Label>
+          <Col sm={5}>
             <AvInput
               type="email"
               name="email"
@@ -26,7 +28,13 @@ const LoginForm = props => {
               required
             />
             <AvFeedback>Please enter your username.</AvFeedback>
-            <Label for="examplePassword">Password</Label>
+          </Col>
+        </AvGroup>
+        <AvGroup row>
+          <Label for="password" sm={2}>
+            Password
+          </Label>
+          <Col sm={5}>
             <AvInput
               type="password"
               name="password"
@@ -36,14 +44,18 @@ const LoginForm = props => {
               onChange={handleChange}
               required
             />
-          </AvGroup>
-          <AvFeedback>Please enter your password.</AvFeedback>
-        </Col>
-        <Button className="m-2">Login</Button>
-        <Button className="m-2">Login With Google</Button>
-        <Button className="m-2" href="/registration">
-          Sign Up
-        </Button>
+            <AvFeedback>Please enter your password.</AvFeedback>
+          </Col>
+        </AvGroup>
+        <AvGroup check row>
+          <Col>
+            <Button className="m-2">Login</Button>
+            <Button className="m-2">Login With Google</Button>
+            <Button className="m-2" href="/registration">
+              Sign Up
+            </Button>
+          </Col>
+        </AvGroup>
       </AvForm>
     </Container>
   )
