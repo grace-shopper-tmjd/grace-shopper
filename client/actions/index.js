@@ -148,10 +148,8 @@ export const fetchOrderDetails = orderId => async dispatch => {
 import {setCart, getCart, clearCart, CART_KEY} from '../utils'
 
 export const fetchUserCart = userId => async dispatch => {
-  console.log('fetching using cart thunk running')
   //if the user  is logged in
   if (userId) {
-    console.log('option 1')
     try {
       const {data} = await axios.get(`/api/orders/${userId}/cart`)
       const action = gotUserCartFromServer(data)
@@ -161,14 +159,12 @@ export const fetchUserCart = userId => async dispatch => {
     }
     //if the user is a guest and already has a cart
   } else if (localStorage && localStorage.getItem(CART_KEY)) {
-    console.log('option 2')
     const cart = getCart(CART_KEY)
     const action = gotUserCartFromServer(cart)
     dispatch(action)
     //if the user is a guest and does not have a cart yet
   } else {
-    console.log('option 3')
-    setCart()
+    setCart({})
     const cart = getCart(CART_KEY)
     const action = gotUserCartFromServer(cart)
     dispatch(action)
@@ -176,7 +172,7 @@ export const fetchUserCart = userId => async dispatch => {
 }
 
 export const addToCart = (beer, userId) => async dispatch => {
-  //if the user is logged in
+  //If the user is logged in
   if (userId) {
     try {
       const {data} = await axios.post(`/api/orders/${userId}/cart/add`, beer)
@@ -185,10 +181,19 @@ export const addToCart = (beer, userId) => async dispatch => {
     } catch (error) {
       console.log(error)
     }
-    //if the user is a guest
+    //If the user is a guest
   } else {
-    setCart(beer, CART_KEY)
-    const action = addedItemToCart(beer)
+    const {data} = await axios.get(`/api/beers/${beer.beerId}`)
+
+    // Create fake order obj
+    let guestCart = {
+      beerId: beer.beerId,
+      quantity: beer.quantity,
+      beer: data,
+      price: beer.price * beer.quantity
+    }
+    setCart(guestCart, CART_KEY)
+    const action = addedItemToCart(guestCart)
     dispatch(action)
   }
 }
@@ -254,7 +259,6 @@ export const logout = () => async dispatch => {
 }
 
 export const createOneUser = (user, history) => async dispatch => {
-  console.log('created User', user)
   try {
     const {data} = await axios.post('/api/users/auth/registration', user)
     const newUser = data

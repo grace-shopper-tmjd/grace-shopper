@@ -1,50 +1,74 @@
-import React from 'react'
-import {Media} from 'reactstrap'
+import React, {Component} from 'react'
+import {
+  Container,
+  Jumbotron,
+  Card,
+  CardTitle,
+  CardText,
+  CardImg,
+  CardImgOverlay,
+  Button
+} from 'reactstrap'
+import {Link} from 'react-router-dom'
 
-const About = () => {
-  return (
-    <Media>
-      <Media left href="#">
-        <Media
-          object
-          src="https://images.unsplash.com/photo-1516458464372-eea4ab222b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=40"
-          alt="Generic placeholder image"
-        />
-      </Media>
-      <Media body>
-        <Media heading>Media heading</Media>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-        ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-        tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-        fringilla. Donec lacinia congue felis in faucibus. It is a long
-        established fact that a reader will be distracted by the readable
-        content of a page when looking at its layout. The point of using Lorem
-        Ipsum is that it has a more-or-less normal distribution of letters, as
-        opposed to using 'Content here, content here', making it look like
-        readable English. Many desktop publishing packages and web page editors
-        now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum' will uncover many web sites still in their infancy. Various
-        versions have evolved over the years, sometimes by accident, sometimes
-        on purpose (injected humour and the like). It is a long established fact
-        that a reader will be distracted by the readable content of a page when
-        looking at its layout. The point of using Lorem Ipsum is that it has a
-        more-or-less normal distribution of letters, as opposed to using
-        'Content here, content here', making it look like readable English. Many
-        desktop publishing packages and web page editors now use Lorem Ipsum as
-        their default model text, and a search for 'lorem ipsum' will uncover
-        many web sites still in their infancy. Various versions have evolved
-        over the years, sometimes by accident, sometimes on purpose (injected
-        humour and the like). It is a long established fact that a reader will
-        be distracted by the readable content of a page when looking at its
-        layout. The point of using Lorem Ipsum is that it has a more-or-less
-        normal distribution of letters, as opposed to using 'Content here,
-        content here', making it look like readable English. Many desktop
-        publishing packages and web page editors now use Lorem Ipsum as their
-        default model text, and a search for 'lorem ipsum' will uncover many web
-        sites still in their infancy.
-      </Media>
-    </Media>
-  )
+export default class About extends Component {
+  render() {
+    const divStyle = {
+      padding: '0',
+      color: 'white',
+      backgroundImage: `url('https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1789&q=80')`,
+      backgroundSize: '100%',
+      height: '100vh',
+      backgroundRepeat: 'no-repeat'
+    }
+
+    const flexStyle = {
+      height: '90vh'
+    }
+
+    const subTitleStyle = {
+      fontSize: '30px',
+      margin: '1.5rem 0'
+    }
+
+    const buttonStyle = {
+      margin: '1.5rem 0',
+      fontSize: '25px',
+      backgroundColor: 'rgba(255,255,255, 0.2)',
+      border: '2px solid white'
+    }
+
+    const linkStyle = {
+      color: 'white',
+      textDecoration: 'none'
+    }
+
+    return (
+      <Jumbotron fluid style={divStyle}>
+        <div
+          className="d-flex justify-content-center align-items-center flex-column"
+          style={flexStyle}
+        >
+          <h3 className="lead" style={subTitleStyle}>
+            We are a group of beer heads that started this online store in 2019.
+            After realizing the smaller independent breweries are not getting
+            the attention they deserve, we've set out to bring a handful of hand
+            selected craft beer to cater all beer drinkers.
+          </h3>
+          <hr className="my-2" />
+          <p className="text-center h3 lead">
+            We are 4 professionally trained beer connoisseurs, that helped
+            curate the beers that we sell on our webstore.
+          </p>
+          <p className="lead text-center h3">
+            <Button color="primary" style={buttonStyle}>
+              <Link to="/" style={linkStyle}>
+                Back to Home
+              </Link>
+            </Button>
+          </p>
+        </div>
+      </Jumbotron>
+    )
+  }
 }
-
-export default About

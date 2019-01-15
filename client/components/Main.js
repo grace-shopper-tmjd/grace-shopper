@@ -62,15 +62,14 @@ export default class Main extends Component {
         >
           <h1 className="display-1">Tops Hops</h1>
           <h2 className="lead" style={subTitleStyle}>
-            This is a simple hero unit, a simple Jumbotron-style component for
-            calling extra attention to featured content or information.
+            Welcome to our hand-picked craft beer store!
           </h2>
           <hr className="my-2" />
           <p className="text-center h3 lead">
-            It uses utility classes for typography and spacing to space content
-            out within the larger container.
+            We have a team of beer experts that help curate a selection of beer
+            every month.
           </p>
-          <p className="lead text-center h3">
+          <p className="lead text-center h3" margin="10px">
             <Button color="primary" style={buttonStyle}>
               <Link to="/beers" style={linkStyle}>
                 Explore Our Beers
