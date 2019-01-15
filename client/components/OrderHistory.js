@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import {Table} from 'reactstrap'
+import {withRouter, Link} from 'react-router-dom'
+import {Table, Button} from 'reactstrap'
+import Moment from 'react-moment'
+import 'moment-timezone'
 
 import {fetchAllOrders} from '../actions/index'
 
@@ -15,6 +17,8 @@ class OrderHistory extends Component {
   }
 
   render() {
+    console.log(this.props.orders)
+
     return (
       <div>
         <h3>Shipped Orders</h3>
@@ -23,17 +27,29 @@ class OrderHistory extends Component {
             <tr>
               <th>Order Number</th>
               <th>Order Date</th>
+              <th>Shipping Status</th>
+              <th>Order Details</th>
             </tr>
           </thead>
           <tbody>
-            {this.props.orders.map(({orderNumber, orderDate}, i) => {
-              return (
-                <tr key={i}>
-                  <th scope="row">{orderNumber}</th>
-                  <td>{orderDate}</td>
-                </tr>
-              )
-            })}
+            {this.props.orders.map(
+              ({orderNumber, orderDate, id, shipped}, i) => {
+                return (
+                  <tr key={i}>
+                    <th scope="row">{orderNumber}</th>
+                    <td>
+                      <Moment format="MM/DD/YYYY">{orderDate}</Moment>
+                    </td>
+                    <td>{shipped.toString()}</td>
+                    <Link to={`/order/${id}`}>
+                      <Button color="secondary" size="lg">
+                        View
+                      </Button>
+                    </Link>
+                  </tr>
+                )
+              }
+            )}
           </tbody>
         </Table>
       </div>
