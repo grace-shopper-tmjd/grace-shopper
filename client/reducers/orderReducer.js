@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
     case ADD_TO_CART:
       return {
         ...state,
-        cartItems: [...state.cartItems, action.item]
+        cartItems: [...state.cartItems, ...action.item]
       }
     case GET_USER_CART:
       return {

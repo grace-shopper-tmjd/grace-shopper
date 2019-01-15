@@ -127,9 +127,10 @@ class Checkout extends Component {
                   {this.props.cartItems.map(order => (
                     <CartItem
                       key={order.id}
-                      order={order}
+                      orderItem={order}
                       deleteBeer={this.props.deleteBeer}
                       updateQuantity={this.props.updateQuantity}
+                      userId={this.props.userId}
                     />
                   ))}
                 </CardGroup>
@@ -153,8 +154,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getUserCart: () => dispatch(fetchUserCart()),
-    deleteBeer: id => dispatch(deleteFromCart(id)),
-    updateQuantity: item => dispatch(updateCartItem(item))
+    deleteBeer: (beer, userId) => dispatch(deleteFromCart(beer, userId)),
+    updateQuantity: (beer, userId) => dispatch(updateCartItem(beer, userId))
   }
 }
 
