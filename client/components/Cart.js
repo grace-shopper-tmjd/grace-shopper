@@ -28,13 +28,11 @@ class Cart extends React.Component {
     const {userId} = this.props
     await this.props.getUserCart(userId)
     const userCart = this.props.cartItems
-    console.log('userCart', userCart)
     if (userCart) {
       this.setState({
         cartItems: userCart
       })
     }
-    console.log('cartItems', this.state.cartItems)
   }
 
   render() {
@@ -60,15 +58,19 @@ class Cart extends React.Component {
           </ModalHeader>
           <ModalBody>
             <ListGroup>
-              {this.state.cartItems.map(orderItem => (
-                <CartItem
-                  key={orderItem.id}
-                  orderItem={orderItem}
-                  deleteBeer={this.props.deleteBeer}
-                  updateQuantity={this.props.updateQuantity}
-                  userId={this.props.userId}
-                />
-              ))}
+              {this.props.cartItems !== null ? (
+                this.props.cartItems.map((orderItem, i) => (
+                  <CartItem
+                    key={orderItem.id || i} // index (Change it)
+                    orderItem={orderItem}
+                    deleteBeer={this.props.deleteBeer}
+                    updateQuantity={this.props.updateQuantity}
+                    userId={this.props.userId || 'guestId'}
+                  />
+                ))
+              ) : (
+                <div>Loading....</div>
+              )}
             </ListGroup>
           </ModalBody>
           <ModalFooter>
@@ -90,7 +92,6 @@ class Cart extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('mapStateToProps in Cart', state)
   return {
     cartItems: state.orders.cartItems,
     userId: state.user.id

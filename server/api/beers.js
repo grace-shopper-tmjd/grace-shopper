@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Beer} = require('../db/models/index')
+const {Beer, BeerStyle} = require('../db/models/index')
 module.exports = router
 
 const throwNotFoundIfFalsey = maybeFalsey => {
@@ -25,7 +25,8 @@ router.get('/:id', async (req, res, next) => {
     const beer = await Beer.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [{model: BeerStyle}]
     })
     throwNotFoundIfFalsey(beer)
     res.send(beer)
