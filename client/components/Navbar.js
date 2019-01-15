@@ -126,15 +126,25 @@ class NavBar extends Component {
 
               {/* link to login page */}
               {this.props.isLoggedIn ? (
-                <NavItem>
-                  <NavLink
-                    style={linkStyle}
-                    to="/logout"
-                    onClick={this.props.logOutUser}
-                  >
-                    Logout
-                  </NavLink>
-                </NavItem>
+                <>
+                  <NavItem>
+                    <NavLink
+                      style={linkStyle}
+                      to={`/orderhistory/${this.props.userId}`}
+                    >
+                      Account
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      style={linkStyle}
+                      to="/logout"
+                      onClick={this.props.logOutUser}
+                    >
+                      Logout
+                    </NavLink>
+                  </NavItem>
+                </>
               ) : (
                 <NavItem>
                   <NavLink style={linkStyle} to="/login">
@@ -167,11 +177,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
-
-/**
- * PROP TYPES
- */
-// Navbar.propTypes = {
-//   //   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }

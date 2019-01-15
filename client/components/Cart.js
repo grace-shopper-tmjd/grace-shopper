@@ -75,7 +75,7 @@ class Cart extends React.Component {
           </ModalBody>
           <ModalFooter>
             <Button
-              href="/checkout"
+              href={`/${this.props.userId}/checkout`}
               color="success"
               onClick={this.props.closeCart}
             >

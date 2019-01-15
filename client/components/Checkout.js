@@ -11,17 +11,14 @@ import {
 } from 'reactstrap'
 import {CartItem} from './index'
 import {connect} from 'react-redux'
-import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
-
-const user = {
-  firstName: 'Camille',
-  lastName: 'Jones',
-  email: 'Camille@yahoo.com',
-  address: '24 Gofish Lane',
-  city: 'Kalamazoo',
-  state: 'Michigan',
-  zipcode: '49001'
-}
+import {
+  fetchUserCart,
+  updateCartItem,
+  deleteFromCart,
+  markOrderAsShipped,
+  createCart
+} from '../actions/index'
+import {withRouter} from 'react-router-dom'
 
 class Checkout extends Component {
   constructor(props) {
@@ -30,11 +27,18 @@ class Checkout extends Component {
       cartItems: [],
       subtotal: 0
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   async componentDidMount() {
-    await this.props.getUserCart()
+    const {userId} = this.props
+    if (userId) {
+      await this.props.getUserCart(userId)
+    } else {
+      this.props.getUserCart(this.props.match.params.userId)
+    }
     const userCart = this.props.cartItems
+
     if (userCart) {
       this.setState({
         cartItems: userCart
@@ -42,8 +46,14 @@ class Checkout extends Component {
     }
   }
 
+  handleSubmit() {
+    const orderID = this.props.cartItems[0].orderId
+    this.props.markAsShipped(orderID, this.props.userId)
+    this.props.createNewCart(this.props.userId)
+  }
+
   render() {
-    const cartItems = this.state.cartItems
+    const cartItems = this.props.cartItems
     let total = 0
     let orderId
     if (cartItems.length) {
@@ -51,7 +61,7 @@ class Checkout extends Component {
       orderId = cartItems[0].orderId
     }
     total = total.toFixed(2)
-
+    console.log(total)
     return (
       <Container>
         <Table borderless>
@@ -61,13 +71,13 @@ class Checkout extends Component {
               <th>Shipping Address</th>
               <td>
                 <div>
-                  {user.firstName}
-                  {user.lastName}
+                  {this.props.user.firstName}
+                  {this.props.user.lastName}
                 </div>
-                <div>{user.address}</div>
-                <div>{user.city}</div>
-                <div>{user.state}</div>
-                <div>{user.zipcode}</div>
+                <div>{this.props.user.address}</div>
+                <div>{this.props.user.city}</div>
+                <div>{this.props.user.state}</div>
+                <div>{this.props.user.zipcode}</div>
               </td>
               <td> `</td>
               <td> `</td>
@@ -139,24 +149,37 @@ class Checkout extends Component {
           </tbody>
         </Table>
 
-        <Button href={`/order/${orderId}/confirmation`}>Purchase</Button>
+        <Button
+          href={`/order/${orderId}/confirmation`}
+          onClick={this.handleSubmit}
+        >
+          Purchase
+        </Button>
       </Container>
     )
   }
 }
 
 const mapStateToProps = state => {
+  console.log('state in mapstatetoprops', state)
   return {
-    cartItems: state.orders.cartItems
+    cartItems: state.orders.cartItems,
+    user: state.user,
+    userId: state.user.id
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserCart: () => dispatch(fetchUserCart()),
+    getUserCart: userID => dispatch(fetchUserCart(userID)),
     deleteBeer: (beer, userId) => dispatch(deleteFromCart(beer, userId)),
-    updateQuantity: (beer, userId) => dispatch(updateCartItem(beer, userId))
+    updateQuantity: (beer, userId) => dispatch(updateCartItem(beer, userId)),
+    markAsShipped: (orderId, userId) =>
+      dispatch(markOrderAsShipped(orderId, userId)),
+    createNewCart: userId => dispatch(createCart(userId))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Checkout)
+)
