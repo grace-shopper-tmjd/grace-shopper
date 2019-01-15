@@ -1,51 +1,50 @@
-import React, {Component} from 'react'
-// import{connect} from 'react-redux'
-// import { withRouter } from 'react-router-dom'
+import React from 'react'
 import {
-  Container,
-  Col,
-  Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input
-} from 'reactstrap'
+  AvForm,
+  AvGroup,
+  AvFeedback,
+  AvInput
+} from 'availity-reactstrap-validation'
+import {Container, Col, Button, Label} from 'reactstrap'
 
 const LoginForm = props => {
-  const {handleSubmit, handleChange, formName, error} = props
+  const {handleSubmit, handleChange, formName} = props
   return (
     <Container>
-      <Form onSubmit={handleSubmit} formName={formName}>
+      <AvForm onSubmit={handleSubmit} formName={formName}>
         <h2>Sign In</h2>
         <Col>
-          <FormGroup>
+          <AvGroup>
             <Label>Email</Label>
-            <Input
+            <AvInput
               type="email"
               name="email"
               id="exampleEmail"
               placeholder="myemail@email.com"
               value={props.email}
               onChange={handleChange}
+              required
             />
+            <AvFeedback>Please enter your username.</AvFeedback>
             <Label for="examplePassword">Password</Label>
-            <Input
+            <AvInput
               type="password"
               name="password"
               id="examplePassword"
               placeholder="********"
               value={props.password}
               onChange={handleChange}
+              required
             />
-          </FormGroup>
+          </AvGroup>
+          <AvFeedback>Please enter your password.</AvFeedback>
         </Col>
         <Button className="m-2">Login</Button>
         <Button className="m-2">Login With Google</Button>
         <Button className="m-2" href="/registration">
           Sign Up
         </Button>
-      </Form>
+      </AvForm>
     </Container>
   )
 }
