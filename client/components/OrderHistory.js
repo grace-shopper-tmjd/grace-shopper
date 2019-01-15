@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Table, Button} from 'reactstrap'
+import Moment from 'react-moment'
+import 'moment-timezone'
 
 import {fetchAllOrders} from '../actions/index'
 
@@ -20,6 +22,7 @@ class OrderHistory extends Component {
 
   render() {
     console.log(this.props.orders)
+
     return (
       <>
         <h3>Shipped Orders</h3>
@@ -38,7 +41,9 @@ class OrderHistory extends Component {
                 return (
                   <tr key={i}>
                     <th scope="row">{orderNumber}</th>
-                    <td>{orderDate}</td>
+                    <td>
+                      <Moment format="MM/DD/YYYY">{orderDate}</Moment>
+                    </td>
                     <td>{shipped.toString()}</td>
                     <Link to={`/order/${id}`}>
                       <Button color="secondary" size="lg">

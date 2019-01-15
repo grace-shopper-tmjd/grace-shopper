@@ -40,23 +40,23 @@ class Order extends React.Component {
       console.log(this.props.orderDetails)
       return (
         <div>
+          <h3>Order Details</h3>
           <Table>
             <thead>
               <tr>
                 <th>Quantity</th>
                 <th>Price</th>
-                <th>Beer</th>
-                <th>Beer Style</th>
+                <th>Item</th>
               </tr>
             </thead>
 
             <tbody>
-              {this.props.orderDetails.map(({quantity, price, beerId}, i) => {
+              {this.props.orderDetails.map(({quantity, price, beer}, i) => {
                 return (
                   <tr key={i}>
                     <th scope="row">{quantity}</th>
                     <td>{price}</td>
-                    <td>{beerId}</td>
+                    <td>{beer.name}</td>
                   </tr>
                 )
               })}
