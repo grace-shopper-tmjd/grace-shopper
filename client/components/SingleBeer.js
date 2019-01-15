@@ -73,19 +73,19 @@ class SingleBeer extends Component {
                   id="exampleSelect"
                   onChange={this.handleChange}
                 >
-                  <option key={1} value={i}>
+                  <option key={1} value={1}>
                     1
                   </option>
-                  <option key={2} value={i}>
+                  <option key={2} value={2}>
                     2
                   </option>
-                  <option key={3} value={i}>
+                  <option key={3} value={3}>
                     3
                   </option>
-                  <option key={4} value={i}>
+                  <option key={4} value={4}>
                     4
                   </option>
-                  <option key={5} value={i}>
+                  <option key={5} value={5}>
                     5
                   </option>
                 </Input>

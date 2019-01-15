@@ -157,7 +157,7 @@ export const fetchUserCart = userId => async dispatch => {
 }
 
 export const addToCart = (beer, userId) => async dispatch => {
-  //if the user is logged in
+  //If the user is logged in
   if (userId) {
     try {
       const {data} = await axios.post(`/api/orders/${userId}/cart/add`, beer)
@@ -166,22 +166,18 @@ export const addToCart = (beer, userId) => async dispatch => {
     } catch (error) {
       console.log(error)
     }
-    //if the user is a guest
+    //If the user is a guest
   } else {
     const {data} = await axios.get(`/api/beers/${beer.beerId}`)
 
-    // create fake order obj
+    // Create fake order obj
     let guestCart = {
       beerId: beer.beerId,
       quantity: beer.quantity,
       beer: data,
       price: beer.price * beer.quantity
     }
-    // add  a beer obj to the fake order
-    // setCart(fake order obj)
     setCart(guestCart, CART_KEY)
-    //setCart(data, CART_KEY)
-    //const action = addedItemToCart(data)
     const action = addedItemToCart(guestCart)
     dispatch(action)
   }
