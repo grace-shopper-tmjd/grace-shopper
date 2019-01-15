@@ -8,26 +8,30 @@ const CartItem = props => (
         <Media
           object
           style={{width: '150px'}}
-          src={props.order.beer.imageUrl}
+          src={props.orderItem.beer.imageUrl}
           alt="Generic placeholder image"
         />
       </Media>
 
       <Media className="ml-4" left>
         <Media left heading>
-          {props.order.beer.name}
+          {props.orderItem.beer.name}
         </Media>
         <Media body>
           <div>
-            Price: {(props.order.beer.price * props.order.quantity).toFixed(2)}
+            Price:{' '}
+            {(props.orderItem.beer.price * props.orderItem.quantity).toFixed(2)}
           </div>
           <div>
             <Button
               onClick={() =>
-                props.updateQuantity({
-                  ...props.order,
-                  quantity: props.order.quantity - 1
-                })
+                props.updateQuantity(
+                  {
+                    ...props.orderItem,
+                    quantity: props.orderItem.quantity - 1
+                  },
+                  props.userId
+                )
               }
               style={{
                 size: '10px',
@@ -39,13 +43,16 @@ const CartItem = props => (
             >
               -
             </Button>
-            {props.order.quantity}
+            {props.orderItem.quantity}
             <Button
               onClick={() =>
-                props.updateQuantity({
-                  ...props.order,
-                  quantity: props.order.quantity + 1
-                })
+                props.updateQuantity(
+                  {
+                    ...props.orderItem,
+                    quantity: props.orderItem.quantity + 1
+                  },
+                  props.userId
+                )
               }
               style={{
                 marginLeft: '5px',
@@ -57,12 +64,12 @@ const CartItem = props => (
               +
             </Button>
           </div>
-          <div>Pack size: {props.order.beer.packSize}</div>
-          <div>Beer style: {props.order.beer.beerStyle.name}</div>
+          <div>Pack size: {props.orderItem.beer.packSize}</div>
+          <div>Beer style: {props.orderItem.beer.beerStyle.name}</div>
         </Media>
       </Media>
       <Button
-        onClick={() => props.deleteBeer(props.order.id)}
+        onClick={() => props.deleteBeer(props.orderItem.id, props.userId)}
         className="ml-2"
         color="danger"
       >

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import Cart from './Cart'
-import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
-import {me} from '../actions/index'
-// import {logout} from '../store'
+import {fetchUserCart, logout} from '../actions/index'
+import {withRouter} from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -37,9 +36,7 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      cartOpen: false,
-      cartItems: [],
-      cartQuantity: 0
+      cartOpen: false
     }
     this.openCart = this.openCart.bind(this)
     this.closeCart = this.closeCart.bind(this)
@@ -63,7 +60,8 @@ class NavBar extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getUserCart()
+    const {userId} = this.props
+    await this.props.getUserCart(userId)
   }
 
   render() {
@@ -121,7 +119,11 @@ class NavBar extends Component {
               {/* link to login page */}
               {this.props.isLoggedIn ? (
                 <NavItem>
-                  <NavLink style={linkStyle} to="/logout">
+                  <NavLink
+                    style={linkStyle}
+                    to="/logout"
+                    onClick={this.props.logOutUser}
+                  >
                     Logout
                   </NavLink>
                 </NavItem>
@@ -142,20 +144,22 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log('mapStateToProps in NavBar', state)
   return {
     isLoggedIn: !!state.user.id,
-    userhey: state.user,
-    cartQuantity: state.orders.cartItems.length
+    cartQuantity: state.orders.cartItems.length,
+    userId: state.user.id
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserCart: () => dispatch(fetchUserCart())
+    getUserCart: userID => dispatch(fetchUserCart(userID)),
+    logOutUser: () => dispatch(logout())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
 
 /**
  * PROP TYPES
