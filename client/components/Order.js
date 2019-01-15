@@ -37,8 +37,8 @@ class Order extends React.Component {
             <tr>
               <th>Quantity</th>
               <th>Price</th>
-              <th>Beer Id</th>
-              <th>----</th>
+              <th>Beer</th>
+              <th>Beer Style</th>
             </tr>
           </thead>
 
