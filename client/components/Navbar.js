@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 import Cart from './Cart'
 import {fetchUserCart, logout} from '../actions/index'
-import {withRouter} from 'react-router-dom'
 import {
   Collapse,
   Navbar,
@@ -36,7 +35,8 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      cartOpen: false
+      cartOpen: false,
+      cartItems: []
     }
     this.openCart = this.openCart.bind(this)
     this.closeCart = this.closeCart.bind(this)
@@ -62,9 +62,17 @@ class NavBar extends Component {
   async componentDidMount() {
     const {userId} = this.props
     await this.props.getUserCart(userId)
+    this.setState({
+      cartItems: this.props.cartItems
+    })
   }
 
   render() {
+    let cartQuantity = 0
+    this.state.cartItems.map(item => {
+      cartQuantity += item.quantity
+    })
+
     return (
       <div>
         {this.state.cartOpen ? (
@@ -112,7 +120,7 @@ class NavBar extends Component {
               {/* link to cart */}
               <NavItem>
                 <Button color="danger" onClick={this.openCart}>
-                  Cart | {this.props.cartQuantity}
+                  Cart | {cartQuantity}
                 </Button>
               </NavItem>
 
@@ -144,10 +152,9 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('mapStateToProps in NavBar', state)
   return {
     isLoggedIn: !!state.user.id,
-    cartQuantity: state.orders.cartItems.length,
+    cartItems: state.orders.cartItems,
     userId: state.user.id
   }
 }
@@ -164,7 +171,7 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
 /**
  * PROP TYPES
  */
-Navbar.propTypes = {
-  //   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-}
+// Navbar.propTypes = {
+//   //   handleClick: PropTypes.func.isRequired,
+//   isLoggedIn: PropTypes.bool.isRequired
+// }

@@ -1,5 +1,5 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux'
+// import React, {Component} from 'react'
+// import {connect} from 'react-redux'
 // import {
 //   Container,
 //   Row,
@@ -11,7 +11,7 @@
 //   Form
 // } from 'reactstrap'
 
-// import { fetchSingleBeer, addToCart } from '../actions/index'
+// import {fetchSingleBeer, addToCart} from '../actions/index'
 
 // class SingleBeer extends Component {
 //   constructor(props) {
@@ -25,7 +25,6 @@
 //   }
 
 //   componentDidMount() {
-//     console.log('single beer props', this.props)
 //     this.props.getSingleBeer(this.props.match.params.beerId)
 //   }
 
