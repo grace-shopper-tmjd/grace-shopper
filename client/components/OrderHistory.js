@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
+import {withRouter} from 'react-router-dom'
 import {Table} from 'reactstrap'
 
 import {fetchAllOrders} from '../actions/index'
@@ -8,10 +8,6 @@ import {fetchAllOrders} from '../actions/index'
 class OrderHistory extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      orders: []
-    }
   }
 
   componentDidMount() {
@@ -20,7 +16,7 @@ class OrderHistory extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <h3>Shipped Orders</h3>
         <Table>
           <thead>
@@ -40,7 +36,7 @@ class OrderHistory extends Component {
             })}
           </tbody>
         </Table>
-      </>
+      </div>
     )
   }
 }
@@ -57,4 +53,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderHistory)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(OrderHistory)
+)
