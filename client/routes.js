@@ -4,7 +4,6 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
   Login,
-  Signup,
   UserHome,
   BeerList,
   SingleBeer,
@@ -40,7 +39,6 @@ class Routes extends Component {
         <Route exact path="/beers/:beerId" component={SingleBeer} />
         <Route exact path="/about" component={About} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/signup" component={Signup} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/registration" component={Registration} />

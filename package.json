@@ -37,6 +37,7 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "availity-reactstrap-validation": "^2.5.0",
     "axios": "^0.15.3",
     "bootstrap": "^4.2.1",
     "chai-things": "^0.2.0",
