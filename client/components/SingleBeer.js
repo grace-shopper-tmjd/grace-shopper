@@ -17,8 +17,10 @@ class SingleBeer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      beer: {}
+      beer: {},
+      quantity: 1
     }
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -26,14 +28,24 @@ class SingleBeer extends Component {
     this.props.getSingleBeer(this.props.match.params.beerId)
   }
 
-  handleSubmit() {
-    this.props.addSingleBeer({
-      beerId: this.props.beer.id,
-      quantity: 10,
-      price: parseFloat(
-        Math.round(this.props.beer.price * 10 * 100) / 100
-      ).toFixed(2)
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
     })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.addSingleBeer(
+      {
+        beerId: this.props.beer.id,
+        quantity: this.state.quantity,
+        price: parseFloat(
+          Math.round(this.props.beer.price * this.state.quantity * 100) / 100
+        ).toFixed(2)
+      },
+      this.props.userId
+    )
   }
 
   render() {
@@ -55,12 +67,27 @@ class SingleBeer extends Component {
             <Form>
               <FormGroup>
                 <Label for="exampleSelect">Quantity</Label>
-                <Input type="select" name="select" id="exampleSelect">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <Input
+                  type="select"
+                  name="quantity"
+                  id="exampleSelect"
+                  onChange={this.handleChange}
+                >
+                  <option key={1} value={1}>
+                    1
+                  </option>
+                  <option key={2} value={2}>
+                    2
+                  </option>
+                  <option key={3} value={3}>
+                    3
+                  </option>
+                  <option key={4} value={4}>
+                    4
+                  </option>
+                  <option key={5} value={5}>
+                    5
+                  </option>
                 </Input>
               </FormGroup>
             </Form>
@@ -76,14 +103,14 @@ class SingleBeer extends Component {
 
 const mapStateToProps = state => {
   return {
-    beer: state.beers.selectedBeer
+    beer: state.beers.selectedBeer,
+    userId: state.user.id
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     getSingleBeer: id => dispatch(fetchSingleBeer(id)),
-    addSingleBeer: id => dispatch(addToCart(id))
+    addSingleBeer: (beer, userID) => dispatch(addToCart(beer, userID))
   }
 }
 

@@ -130,30 +130,76 @@ export const fetchSingleOrder = orderId => async dispatch => {
 // Thunk Creator - CART
 // ===========================================
 
-// need user id
-// add try and catch block
-export const fetchUserCart = () => async dispatch => {
-  const {data} = await axios.get(`/api/orders/3/cart`)
-  const action = gotUserCartFromServer(data)
-  dispatch(action)
+import {setCart, getCart, clearCart, CART_KEY} from '../utils'
+
+export const fetchUserCart = userId => async dispatch => {
+  //if the user  is logged in
+  if (userId) {
+    try {
+      const {data} = await axios.get(`/api/orders/${userId}/cart`)
+      const action = gotUserCartFromServer(data)
+      dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+    //if the user is a guest and already has a cart
+  } else if (localStorage && localStorage.getItem(CART_KEY)) {
+    const cart = getCart(CART_KEY)
+    const action = gotUserCartFromServer(cart)
+    dispatch(action)
+    //if the user is a guest and does not have a cart yet
+  } else {
+    setCart({})
+    const cart = getCart(CART_KEY)
+    const action = gotUserCartFromServer(cart)
+    dispatch(action)
+  }
 }
 
-export const addToCart = item => async dispatch => {
-  const {data} = await axios.post('/api/orders/3/cart/add', item)
-  const action = addedItemToCart(data)
-  dispatch(action)
+export const addToCart = (beer, userId) => async dispatch => {
+  //If the user is logged in
+  if (userId) {
+    try {
+      const {data} = await axios.post(`/api/orders/${userId}/cart/add`, beer)
+      const action = addedItemToCart(data)
+      dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+    //If the user is a guest
+  } else {
+    const {data} = await axios.get(`/api/beers/${beer.beerId}`)
+
+    // Create fake order obj
+    let guestCart = {
+      beerId: beer.beerId,
+      quantity: beer.quantity,
+      beer: data,
+      price: beer.price * beer.quantity
+    }
+    setCart(guestCart, CART_KEY)
+    const action = addedItemToCart(guestCart)
+    dispatch(action)
+  }
 }
 
-export const updateCartItem = item => async dispatch => {
-  const {data} = await axios.put(`/api/orders/3/cart/${item.id}`, item)
-  const action = updatedCartItem(data)
-  dispatch(action)
-}
-
-export const deleteFromCart = id => async dispatch => {
+export const updateCartItem = (beer, userId) => async dispatch => {
   try {
-    await axios.delete(`/api/orders/3/cart/${id}`)
-    dispatch(deletedItemFromCart(id))
+    const {data} = await axios.put(
+      `/api/orders/${userId}/cart/${beer.id}`,
+      beer
+    )
+    const action = updatedCartItem(data)
+    dispatch(action)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deleteFromCart = (orderDetailsId, userId) => async dispatch => {
+  try {
+    await axios.delete(`/api/orders/${userId}/cart/${orderDetailsId}`)
+    dispatch(deletedItemFromCart(orderDetailsId))
   } catch (error) {
     console.log(error)
   }
@@ -191,14 +237,13 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
-    // history.push('/login')
+    history.push('/login')
   } catch (err) {
     console.error(err)
   }
 }
 
 export const createOneUser = (user, history) => async dispatch => {
-  console.log('created User', user)
   try {
     const {data} = await axios.post('/api/users/auth/registration', user)
     const newUser = data

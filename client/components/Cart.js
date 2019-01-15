@@ -15,7 +15,7 @@ import {
 import {connect} from 'react-redux'
 import {CartItem} from './index'
 import {fetchUserCart, updateCartItem, deleteFromCart} from '../actions/index'
-
+import {withRouter} from 'react-router-dom'
 class Cart extends React.Component {
   constructor(props) {
     super(props)
@@ -25,7 +25,8 @@ class Cart extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.getUserCart()
+    const {userId} = this.props
+    await this.props.getUserCart(userId)
     const userCart = this.props.cartItems
     if (userCart) {
       this.setState({
@@ -57,14 +58,19 @@ class Cart extends React.Component {
           </ModalHeader>
           <ModalBody>
             <ListGroup>
-              {this.props.cartItems.map(order => (
-                <CartItem
-                  key={order.id}
-                  order={order}
-                  deleteBeer={this.props.deleteBeer}
-                  updateQuantity={this.props.updateQuantity}
-                />
-              ))}
+              {this.props.cartItems !== null ? (
+                this.props.cartItems.map((orderItem, i) => (
+                  <CartItem
+                    key={orderItem.id || i} // index (Change it)
+                    orderItem={orderItem}
+                    deleteBeer={this.props.deleteBeer}
+                    updateQuantity={this.props.updateQuantity}
+                    userId={this.props.userId || 'guestId'}
+                  />
+                ))
+              ) : (
+                <div>Loading....</div>
+              )}
             </ListGroup>
           </ModalBody>
           <ModalFooter>
@@ -87,16 +93,17 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.orders.cartItems
+    cartItems: state.orders.cartItems,
+    userId: state.user.id
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserCart: () => dispatch(fetchUserCart()),
-    deleteBeer: id => dispatch(deleteFromCart(id)),
-    updateQuantity: item => dispatch(updateCartItem(item))
+    getUserCart: userID => dispatch(fetchUserCart(userID)),
+    deleteBeer: (beer, userID) => dispatch(deleteFromCart(beer, userID)),
+    updateQuantity: (beer, userID) => dispatch(updateCartItem(beer, userID))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))
