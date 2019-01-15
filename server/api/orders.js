@@ -60,12 +60,26 @@ router.get('/:userId/cart', async (req, res, next) => {
   }
 })
 
+//get order history details for a specific user and order
+// router.get('/:userId/:orderId', async (req, res, next) => {
+//   const orderId = req.params.orderId
+//   try {
+//     const orderDetails = await OrderDetails.findAll({
+//       where: {orderId: orderId},
+//       include: [{model: Beer, include: [BeerStyle]}]
+//     })
+//     res.send(orderDetails)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
 //get order history details for a specific order
-router.get('/:userId/:orderId', async (req, res, next) => {
+router.get('/:orderId', async (req, res, next) => {
   const orderId = req.params.orderId
   try {
     const orderDetails = await OrderDetails.findAll({
-      where: {orderId: orderId},
+      where: {orderId: req.params.orderId},
       include: [{model: Beer, include: [BeerStyle]}]
     })
     res.send(orderDetails)
