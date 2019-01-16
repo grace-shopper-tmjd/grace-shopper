@@ -10,12 +10,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
+  NavItem
 } from 'reactstrap'
 
 const linkStyle = {

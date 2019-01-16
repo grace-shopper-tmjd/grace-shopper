@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-// import{connect} from 'react-redux'
-// import { withRouter } from 'react-router-dom'
 import {
   Container,
   Col,
@@ -9,8 +7,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-  ButtonGroup
+  Input
 } from 'reactstrap'
 
 const LoginForm = props => {
@@ -45,7 +42,6 @@ const LoginForm = props => {
             </FormGroup>
             <div className="d-flex align-items-center justify-content-center">
               <Button className="m-2">Login</Button>
-              <Button className="m-2">Login With Google</Button>
               <Button className="m-2" href="/registration">
                 Sign Up
               </Button>
