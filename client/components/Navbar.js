@@ -100,19 +100,12 @@ class NavBar extends Component {
               </NavItem>
 
               {/* start of beers menu item */}
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+              <NavItem>
+                <NavLink style={linkStyle} to="/beers">
                   Beers
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem tag={NavLink} to="/beers">
-                    All Beers
-                  </DropdownItem>
-                  <DropdownItem>By Pack Size</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>By Style</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                </NavLink>
+              </NavItem>
+
               {/* link to about */}
               <NavItem>
                 <NavLink style={linkStyle} to="/about">
