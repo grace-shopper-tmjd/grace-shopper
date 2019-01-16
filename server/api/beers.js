@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Beer, BeerStyle} = require('../db/models/index')
+const requireLogin = require('../middlewares/requireLogin')
 module.exports = router
 
 const throwNotFoundIfFalsey = maybeFalsey => {
@@ -63,7 +64,7 @@ router.get('/packsize/:num', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', requireLogin, async (req, res, next) => {
   try {
     const beer = await Beer.create(req.body)
     res.status(201).json(beer)
@@ -72,7 +73,7 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireLogin, async (req, res, next) => {
   try {
     const array = await Beer.update(req.body, {
       returning: true,
@@ -87,7 +88,7 @@ router.put('/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireLogin, async (req, res, next) => {
   try {
     const deletedBeer = await Beer.destroy({
       where: {
