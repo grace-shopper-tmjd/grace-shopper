@@ -27,20 +27,12 @@ export default class Main extends Component {
         <div className="bg-video">
           <video className="bg-video__content" autoPlay muted loop>
             <source
-              src="https://www.videvo.net/videvo_files/converted/2017_09/preview/170804_B_Lombok_087.mp444011.mp4"
+              src="https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4"
               type="video/mp4"
             />
             <source
-              src="https://www.videvo.net/videvo_files/converted/2017_09/preview/170804_B_Lombok_087.mp444011.webm"
+              src="https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4"
               type="video/webm"
-            />
-            <source
-              src="https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4"
-              type="video/ogg"
             />
           </video>
         </div>
