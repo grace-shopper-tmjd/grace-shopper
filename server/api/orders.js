@@ -72,20 +72,6 @@ router.get('/:userId/cart', async (req, res, next) => {
   }
 })
 
-//get order history details for a specific user and order
-// router.get('/:userId/:orderId', async (req, res, next) => {
-//   const orderId = req.params.orderId
-//   try {
-//     const orderDetails = await OrderDetails.findAll({
-//       where: {orderId: orderId},
-//       include: [{model: Beer, include: [BeerStyle]}]
-//     })
-//     res.send(orderDetails)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
 //remove orderDetails from cart
 
 router.delete('/:userId/cart/:id', async (req, res, next) => {
@@ -129,6 +115,18 @@ router.post('/:userId/cart/add', async (req, res, next) => {
   }
 })
 
+// create new order
+
+router.post('/:userId', async (req, res, next) => {
+  const userId = req.params.userId
+  try {
+    const newOrder = await Order.create({userId: userId, shipped: false})
+    res.send(newOrder)
+  } catch (error) {
+    next(error)
+  }
+})
+
 //update quantity of an order detail
 
 router.put('/:userId/cart/:id', async (req, res, next) => {
@@ -156,15 +154,15 @@ router.put('/:userId/cart/:id', async (req, res, next) => {
 
 //change order from not shipped to shipped
 
-router.put('/:userId/cart', async (req, res, next) => {
-  const userId = req.params.userId
+router.put('/:orderId', async (req, res, next) => {
+  const orderId = req.params.orderId
   try {
     const updatedOrder = await Order.update(
       {
         shipped: true
       },
       {
-        where: {userId: userId, shipped: false}
+        where: {id: orderId}
       }
     )
     res.send(updatedOrder)

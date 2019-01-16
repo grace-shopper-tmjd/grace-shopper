@@ -10,9 +10,11 @@ import {
   GET_USER,
   REMOVE_USER,
   CREATE_USER,
-  GET_ORDER_DETAILS
+  GET_ORDER_DETAILS,
+  CREATE_ORDER,
+  MARK_ORDER_AS_SHIPPED
 } from './types'
-
+import {setCart, getCart, clearCart, CART_KEY} from '../utils'
 import axios from 'axios'
 import history from '../history'
 
@@ -56,6 +58,20 @@ export const gotOrderDetails = orderDetails => {
   return {
     type: GET_ORDER_DETAILS,
     orderDetails: orderDetails
+  }
+}
+
+export const markedOrderAsShipped = orderId => {
+  return {
+    type: MARK_ORDER_AS_SHIPPED,
+    orderId
+  }
+}
+
+export const createdNewCart = order => {
+  return {
+    type: CREATE_ORDER,
+    order
   }
 }
 
@@ -129,27 +145,43 @@ export const fetchAllOrders = userId => async dispatch => {
   dispatch(action)
 }
 
-// export const fetchSingleOrder = orderId => async dispatch => {
-//   const {data} = await axios.get(`/api/orders/details/${orderId}`)
-//   const order = data
-//   const action = gotSingleOrderFromServer(order)
-//   dispatch(action)
-// }
-
 export const fetchOrderDetails = orderId => async dispatch => {
   const {data} = await axios.get(`/api/orders/details/${orderId}`)
   const orderDetails = data
   const action = gotOrderDetails(orderDetails)
   dispatch(action)
 }
+
+export const createCart = userId => async dispatch => {
+  if (userId) {
+    try {
+      const {data} = await axios.post(`/api/orders/${userId}`)
+      const action = createdNewCart(data)
+      dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+  } else {
+    clearCart(CART_KEY)
+  }
+}
+
+export const markOrderAsShipped = (orderId, userId) => async dispatch => {
+  if (userId) {
+    const {data} = await axios.put(`/api/orders/${orderId}`)
+    const action = markedOrderAsShipped(data)
+    dispatch(action)
+  }
+}
+
 // Thunk Creator - CART
 // ===========================================
 
-import {setCart, getCart, clearCart, CART_KEY} from '../utils'
-
 export const fetchUserCart = userId => async dispatch => {
   //if the user  is logged in
+  console.log('thunk in userId', userId)
   if (userId) {
+    console.log('fetching cart for logged in user')
     try {
       const {data} = await axios.get(`/api/orders/${userId}/cart`)
       const action = gotUserCartFromServer(data)
@@ -159,11 +191,13 @@ export const fetchUserCart = userId => async dispatch => {
     }
     //if the user is a guest and already has a cart
   } else if (localStorage && localStorage.getItem(CART_KEY)) {
+    console.log('fetching cart for guest with a cart')
     const cart = getCart(CART_KEY)
     const action = gotUserCartFromServer(cart)
     dispatch(action)
     //if the user is a guest and does not have a cart yet
   } else {
+    console.log('fetching cart for guest without a cart')
     setCart({})
     const cart = getCart(CART_KEY)
     const action = gotUserCartFromServer(cart)

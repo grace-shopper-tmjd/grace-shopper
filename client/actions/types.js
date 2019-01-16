@@ -12,6 +12,8 @@ export const GET_A_BEER = 'GET_A_BEER'
 export const GET_ALL_ORDERS = 'GET_ALL_ORDERS'
 export const GET_AN_ORDER = 'GET_AN_ORDER'
 export const GET_ORDER_DETAILS = 'GET_ORDER_DETAILS'
+export const CREATE_ORDER = 'CREATE_ORDER'
+export const MARK_ORDER_AS_SHIPPED = 'MARK_ORDER_AS_SHIPPED'
 
 //cart
 export const ADD_TO_CART = 'ADD_TO_CART'
