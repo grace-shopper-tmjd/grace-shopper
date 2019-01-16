@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Order, OrderDetails, Beer, BeerStyle} = require('../db/models/index')
+const requireLogin = require('../middlewares/requireLogin')
 module.exports = router
 
 const throwNotFoundIfFalsey = maybeFalsey => {
@@ -33,7 +34,7 @@ router.get('/', async (req, res, next) => {
 })
 
 //get all shipped orders for specific user
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', requireLogin, async (req, res, next) => {
   const id = req.params.userId
   try {
     const orders = await Order.findAll({
