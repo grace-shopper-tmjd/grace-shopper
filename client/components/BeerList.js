@@ -97,9 +97,6 @@ class BeerList extends Component {
                   toggle={this.toggle}
                   style={marginLStyle}
                 >
-                  <DropdownToggle caret size="md">
-                    Sort by
-                  </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem>Another Action</DropdownItem>
                     <DropdownItem>Another Action</DropdownItem>
