@@ -40,7 +40,7 @@ export default class Main extends Component {
           <div className="d-flex justify-content-center align-items-center flex-column text-white">
             <h1 className="display-1 lead">Tops Hops</h1>
             <h2 className="lead" style={subTitleStyle}>
-              Welcome to our hand-picked craft beer store!
+              About us
             </h2>
             <hr className="my-2" />
             <p className="text-center h3 lead">

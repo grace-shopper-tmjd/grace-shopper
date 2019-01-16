@@ -1,16 +1,6 @@
 import React from 'react'
 
-import {
-  Container,
-  Col,
-  Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText
-} from 'reactstrap'
+import {Container, Row, Button, FormGroup, Input} from 'reactstrap'
 
 const Footer = props => {
   return (

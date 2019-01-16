@@ -17,7 +17,6 @@ import {
   Input,
   InputGroupAddon,
   ButtonDropdown,
-  DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Spinner
@@ -78,7 +77,6 @@ class BeerList extends Component {
 
     const {beers} = this.props
     if (!beers) return <Spinner color="primary" />
-    // let filteredBeers = this.state.beers.filter(beer => beer.name.toLowerCase().indexOf(this.state.searchString.toLowerCase()) !== -1);
     return (
       <div>
         <Container fluid>
@@ -149,5 +147,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeerList)
-
-// export default BeerList;

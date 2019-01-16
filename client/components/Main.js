@@ -1,14 +1,5 @@
 import React, {Component} from 'react'
-import {
-  Container,
-  Jumbotron,
-  Card,
-  CardTitle,
-  CardText,
-  CardImg,
-  CardImgOverlay,
-  Button
-} from 'reactstrap'
+import {Button} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import '../css/componentStyle.css'
 
@@ -43,10 +34,6 @@ export default class Main extends Component {
               src={`https://player.vimeo.com/external/121536139.hd.mp4?s=82ac8e489dd3f70779ccdeec1735512390b208b0&amp;profile_id=119&amp;oauth2_token_id=57447761&amp;download=1`}
               type="video/webm"
             />
-            {/* <source src={`https://www.videvo.net/videvo_files/converted/2017_09/preview/170804_B_Lombok_087.mp444011.mp4`} type="video/mp4" />
-					<source src={`https://www.videvo.net/videvo_files/converted/2017_09/preview/170804_B_Lombok_087.mp444011.webm`} type="video/webm" /> */}
-            {/* <source src={`https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4`} type="video/mp4" />
-						<source src={`https://static.videezy.com/system/resources/previews/000/004/425/original/Light_Beer.mp4`} type="video/ogg" /> */}
           </video>
         </div>
         <div>
