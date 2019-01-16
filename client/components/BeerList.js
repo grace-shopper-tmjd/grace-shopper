@@ -32,17 +32,39 @@ class BeerList extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       beers: [],
-      dropdownOpen: false
+      dropdownOpen: false,
+      searchTerm: ''
     }
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.filteredBeers = this.filteredBeers.bind(this)
   }
 
-  componentDidMount() {
-    this.props.getAllBeers()
+  async componentDidMount() {
+    await this.props.getAllBeers()
+    this.setState({
+      beers: this.props.beers
+    })
+    console.log('hello', this.state.beers)
+  }
+
+  handleInputChange(event) {
+    event.target.value
+      ? this.setState({searchTerm: event.target.value})
+      : this.setState({searchTerm: ''})
   }
 
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
+    })
+  }
+
+  filteredBeers({searchTerm, beers}) {
+    return beers.filter(beer => {
+      return (
+        beer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        beer.description.toLowerCase().includes(searchTerm.toLowerCase())
+      )
     })
   }
   render() {
@@ -56,6 +78,7 @@ class BeerList extends Component {
 
     const {beers} = this.props
     if (!beers) return <Spinner color="primary" />
+    // let filteredBeers = this.state.beers.filter(beer => beer.name.toLowerCase().indexOf(this.state.searchString.toLowerCase()) !== -1);
     return (
       <div>
         <Container fluid>
@@ -63,7 +86,12 @@ class BeerList extends Component {
             <Col md="12">
               <InputGroup>
                 <InputGroupAddon addonType="prepend">Filter</InputGroupAddon>
-                <Input placeholder="search" />
+                <Input
+                  name="searchString"
+                  placeholder="search"
+                  onChange={this.handleInputChange}
+                  value={this.state.searchString}
+                />
                 <ButtonDropdown
                   isOpen={this.state.dropdownOpen}
                   toggle={this.toggle}
@@ -83,25 +111,27 @@ class BeerList extends Component {
         </Container>
         <Container fluid>
           <Row>
-            {beers.map(({id, imageUrl, name, brand, price}, i) => {
-              return (
-                <Col sm={3} key={i}>
-                  <Card>
-                    <CardImg top width="100%" src={imageUrl} alt={name} />
-                    <CardBody body className="text-center">
-                      <CardTitle tag="h4">{name}</CardTitle>
-                      <CardSubtitle>{brand}</CardSubtitle>
-                      <CardText>Price: {price}</CardText>
-                      <Link to={`/beers/${id}`}>
-                        <Button color="secondary" size="lg">
-                          View
-                        </Button>
-                      </Link>
-                    </CardBody>
-                  </Card>
-                </Col>
-              )
-            })}
+            {this.filteredBeers(this.state).map(
+              ({id, imageUrl, name, brand, price}, i) => {
+                return (
+                  <Col sm={3} key={i}>
+                    <Card>
+                      <CardImg top width="100%" src={imageUrl} alt={name} />
+                      <CardBody body className="text-center">
+                        <CardTitle tag="h4">{name}</CardTitle>
+                        <CardSubtitle>{brand}</CardSubtitle>
+                        <CardText>Price: {price}</CardText>
+                        <Link to={`/beers/${id}`}>
+                          <Button color="secondary" size="lg">
+                            View
+                          </Button>
+                        </Link>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                )
+              }
+            )}
           </Row>
         </Container>
       </div>
