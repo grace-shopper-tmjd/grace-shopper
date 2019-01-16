@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Table, Row, Col, Container} from 'reactstrap'
 
 /**
@@ -25,6 +26,11 @@ export const UserHome = props => {
     <Container fluid>
       <Row>
         <Col>
+          <Link to={`/orderhistory/${user.id}`}>
+            <h2 className="text-center mt-5 text-success">
+              Go to Order History
+            </h2>
+          </Link>
           <h2 className="text-center m-3">
             Welcome, {firstName} {lastName}
           </h2>

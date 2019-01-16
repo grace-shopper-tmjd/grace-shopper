@@ -19,7 +19,8 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Spinner
 } from 'reactstrap'
 
 import {fetchAllBeers} from '../actions/index'
@@ -54,7 +55,7 @@ class BeerList extends Component {
     }
 
     const {beers} = this.props
-    if (!beers) return <div>Loading...</div>
+    if (!beers) return <Spinner color="primary" />
     return (
       <div>
         <Container fluid>

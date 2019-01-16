@@ -6,16 +6,13 @@ var divStyle = {
 }
 
 import React from 'react'
-import {ListGroup, Table} from 'reactstrap'
+import {Spinner, Table} from 'reactstrap'
 import {connect} from 'react-redux'
 import {fetchOrderDetails} from '../actions/index'
 
 class Order extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   orderDetails: []
-    // }
   }
 
   async componentDidMount() {
@@ -23,25 +20,17 @@ class Order extends React.Component {
     // const userCart = this.props.cartItems
     console.log('props:', this.props)
     console.log('state:', this.state)
-    // if (this.props.orderDetails) {
-    //   this.setState({
-    //     orderDetails: this.props.orderDetails
-    //   })
-    // }
   }
 
   render() {
     if (!this.props.orderDetails) {
-      console.log('props:', this.props)
-      console.log('state:', this.state)
-      // console.log('param:', this.props.match.params.orderId)
-      return <div>Loading</div>
+      return <Spinner color="primary" />
     } else {
       console.log(this.props.orderDetails)
       return (
         <div>
           <h3>Order Details</h3>
-          <Table>
+          <Table striped bordered responsive>
             <thead>
               <tr>
                 <th>Quantity</th>

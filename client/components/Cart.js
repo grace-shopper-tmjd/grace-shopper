@@ -10,7 +10,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ListGroup
+  ListGroup,
+  Spinner
 } from 'reactstrap'
 import {connect} from 'react-redux'
 import {CartItem} from './index'
@@ -69,7 +70,7 @@ class Cart extends React.Component {
                   />
                 ))
               ) : (
-                <div>Loading....</div>
+                <Spinner color="primary" />
               )}
             </ListGroup>
           </ModalBody>

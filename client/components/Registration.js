@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import RegistrationForm from './RegistrationForm'
-import {Container} from 'reactstrap'
+import {Container, Row} from 'reactstrap'
 import {createOneUser} from '../actions/index'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -32,7 +32,6 @@ class Registration extends Component {
   }
   handleSubmit(event, values) {
     event.preventDefault()
-    // this.props.logIn({...this.state})
     this.setState({
       values
     })
