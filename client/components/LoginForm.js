@@ -1,62 +1,51 @@
-import React from 'react'
+import React, {Component} from 'react'
+// import{connect} from 'react-redux'
+// import { withRouter } from 'react-router-dom'
 import {
-  AvForm,
-  AvGroup,
-  AvFeedback,
-  AvInput
-} from 'availity-reactstrap-validation'
-import {Container, Col, Button, Label} from 'reactstrap'
+  Container,
+  Col,
+  Row,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from 'reactstrap'
 
 const LoginForm = props => {
-  const {handleSubmit, handleChange, formName} = props
+  const {handleSubmit, handleChange, formName, error} = props
   return (
     <Container>
-      <AvForm onSubmit={handleSubmit} formName={formName}>
+      <Form onSubmit={handleSubmit} formName={formName}>
         <h2>Sign In</h2>
-        <AvGroup row>
-          <Label for="email" sm={2}>
-            Email
-          </Label>
-          <Col sm={5}>
-            <AvInput
+        <Col>
+          <FormGroup>
+            <Label>Email</Label>
+            <Input
               type="email"
               name="email"
               id="exampleEmail"
               placeholder="myemail@email.com"
               value={props.email}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your username.</AvFeedback>
-          </Col>
-        </AvGroup>
-        <AvGroup row>
-          <Label for="password" sm={2}>
-            Password
-          </Label>
-          <Col sm={5}>
-            <AvInput
+            <Label for="examplePassword">Password</Label>
+            <Input
               type="password"
               name="password"
               id="examplePassword"
               placeholder="********"
               value={props.password}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your password.</AvFeedback>
-          </Col>
-        </AvGroup>
-        <AvGroup check row>
-          <Col>
-            <Button className="m-2">Login</Button>
-            <Button className="m-2">Login With Google</Button>
-            <Button className="m-2" href="/registration">
-              Sign Up
-            </Button>
-          </Col>
-        </AvGroup>
-      </AvForm>
+          </FormGroup>
+        </Col>
+        <Button className="m-2">Login</Button>
+        <Button className="m-2">Login With Google</Button>
+        <Button className="m-2" href="/registration">
+          Sign Up
+        </Button>
+      </Form>
     </Container>
   )
 }
