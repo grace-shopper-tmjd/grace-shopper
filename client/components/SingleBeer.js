@@ -92,7 +92,7 @@ class SingleBeer extends Component {
               </FormGroup>
             </Form>
             <Button onClick={this.handleSubmit}>Add To Cart</Button>
-            <h4>Product Description</h4>
+            <h4 className="mt-5">Product Description</h4>
             <p>{this.props.beer.description}</p>
           </Col>
         </Row>

@@ -17,12 +17,13 @@ class OrderHistory extends Component {
   }
 
   render() {
-    console.log(this.props.orders)
-
     return (
       <div>
+        <Link to="/home">
+          <h2 className="text-center text-success">Go to Profile info</h2>
+        </Link>
         <h3>Shipped Orders</h3>
-        <Table>
+        <Table striped bordered responsive>
           <thead>
             <tr>
               <th>Order Number</th>
@@ -42,7 +43,7 @@ class OrderHistory extends Component {
                     </td>
                     <td>{shipped.toString()}</td>
                     <Link to={`/order/${id}`}>
-                      <Button color="secondary" size="lg">
+                      <Button color="secondary" size="sm">
                         View
                       </Button>
                     </Link>

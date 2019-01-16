@@ -80,7 +80,15 @@ class NavBar extends Component {
         ) : null}
 
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Tops Hops</NavbarBrand>
+          <NavbarBrand href="/">
+            <div className="d-flex align-items-center">
+              <h2>Tops Hops</h2>
+              <img
+                className="ml-2"
+                src="https://img.icons8.com/ios/30/000000/beer-filled.png"
+              />
+            </div>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -119,9 +127,14 @@ class NavBar extends Component {
 
               {/* link to cart */}
               <NavItem>
-                <Button color="danger" onClick={this.openCart}>
-                  Cart | {cartQuantity}
-                </Button>
+                <a onClick={this.openCart}>
+                  {/* Cart | {cartQuantity} */}
+                  <div className="d-flex align-items-center justify-content-center">
+                    <div>
+                      <img src="https://img.icons8.com/ios-glyphs/30/000000/shopping-cart.png" />
+                    </div>
+                  </div>
+                </a>
               </NavItem>
 
               {/* link to login page */}

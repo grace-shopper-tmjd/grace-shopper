@@ -14,7 +14,7 @@ import {
 
 const Footer = props => {
   return (
-    <Container className="d-flex flex-column align-items-center">
+    <Container className="d-flex flex-column align-items-center mt-5 pt-5">
       <Row>
         <h2 className="text-center m-2">Subscribe to our newsletter!</h2>
       </Row>
