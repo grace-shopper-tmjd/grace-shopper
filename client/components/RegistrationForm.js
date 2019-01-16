@@ -1,235 +1,216 @@
-import React from 'react'
+import React, {Component} from 'react'
+// import{connect} from 'react-redux'
+// import { withRouter } from 'react-router-dom'
 import {
-  AvForm,
-  AvGroup,
-  AvFeedback,
-  AvInput
-} from 'availity-reactstrap-validation'
-
-import {Container, Col, Button, Label} from 'reactstrap'
+  Container,
+  Col,
+  Row,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText
+} from 'reactstrap'
 
 const RegistrationForm = props => {
-  const {handleValidSubmit, handleChange} = props
+  const {handleSubmit, handleChange} = props
   return (
     <Container>
-      <AvForm onSubmit={handleValidSubmit}>
-        <AvGroup row>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup row>
           <Label for="firstname" sm={2}>
             First Name
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="firstname"
               name="firstName"
               id="examplefirstname"
               placeholder="Please enter your first name"
               value={props.firstName}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your first name.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="lastname" sm={2}>
             Last Name
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="lastname"
               name="lastName"
               id="examplelastname"
               placeholder="Please enter your last name"
               value={props.lastName}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your last name.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="email" sm={2}>
             Email
           </Label>
           <Col sm={10}>
-            <AvInput
+            <Input
               type="email"
               name="email"
               id="exampleEmail"
               placeholder="Please enter your email"
               value={props.email}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your email.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="examplePassword" sm={2}>
             Password
           </Label>
           <Col sm={10}>
-            <AvInput
+            <Input
               type="password"
               name="password"
               id="examplePassword"
               placeholder="Please enter your password"
               value={props.password}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your password.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="address" sm={2}>
             Address
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="address"
               name="address"
               id="exampleAddress"
               placeholder="Please enter your address"
               value={props.address}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your address.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="city" sm={2}>
             City
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="city"
               name="city"
               id="exampleCity"
               placeholder="Please enter your city"
               value={props.city}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your city.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="state" sm={2}>
             State
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="state"
               name="state"
               id="exampleState"
               placeholder="Please enter your state"
               value={props.state}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your state.</AvFeedback>
           </Col>
-        </AvGroup>
+        </FormGroup>
 
-        <AvGroup row>
+        <FormGroup row>
           <Label for="zipcode" sm={2}>
             Zipcode
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="number"
+            <Input
+              type="zipcode"
               name="zipcode"
               id="exampleZipcode"
               placeholder="Please enter your zipcode"
               value={props.zipcode}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your zip code.</AvFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Label for="phone" sm={2}>
             Phone
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="number"
+            <Input
+              type="phone"
               name="phone"
               id="examplePhone"
               placeholder="Please enter your phone"
               value={props.phone}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your phone number.</AvFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Label for="billingAdd" sm={2}>
             Billing Address
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="billingAdd"
               name="billingAdd"
               id="examplebillingAdd"
               placeholder="Please enter your billing address"
               value={props.billingAdd}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your billing address.</AvFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Label for="billingCity" sm={2}>
             Billing City
           </Label>
           <Col sm={10}>
-            <AvInput
-              type="text"
+            <Input
+              type="billingCity"
               name="billingCity"
               id="examplebillingCity"
               placeholder="Please enter your billing city"
               value={props.billingCity}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your billing city.</AvFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup row>
+        </FormGroup>
+        <FormGroup row>
           <Label for="billingZip" sm={2}>
             Billing Zip
           </Label>
           <Col sm={10}>
-            <AvInput
+            <Input
               type="billingZip"
               name="billingZip"
               id="examplebillingZip"
               placeholder="Please enter your billing zipcode"
               value={props.billingZip}
               onChange={handleChange}
-              required
             />
-            <AvFeedback>Please enter your billing address.</AvFeedback>
           </Col>
-        </AvGroup>
-        <AvGroup check row>
+        </FormGroup>
+        <FormGroup check row>
           <Col sm={{size: 10, offset: 2}}>
             <Button>Submit</Button>
           </Col>
-        </AvGroup>
-      </AvForm>
+        </FormGroup>
+      </Form>
     </Container>
   )
 }

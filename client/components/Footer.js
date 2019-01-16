@@ -14,31 +14,28 @@ import {
 
 const Footer = props => {
   return (
-    <Container center>
+    <Container className="d-flex flex-column align-items-center">
       <Row>
-        <Col>
-          Subscribe to our newsletter!
-          <Form inline>
-            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-              <Label for="exampleEmail" className="mr-sm-2">
-                Email
-              </Label>
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="something@idk.cool"
-              />
-            </FormGroup>
-            <Button>Submit</Button>
-          </Form>
-        </Col>
-
-        <Col center>
-          <div>Made in NYC 🍺 by Jeremy, Top, Matt, &amp; Danielle.</div>
-        </Col>
-
-        <Col />
+        <h2 className="text-center m-2">Subscribe to our newsletter!</h2>
+      </Row>
+      <Row>
+        <FormGroup>
+          <Input
+            type="email"
+            name="footerEmail"
+            id="footerEmail"
+            placeholder="Enter your email!"
+            className="m-2"
+          />
+        </FormGroup>
+      </Row>
+      <Row>
+        <Button className="m-2">Submit</Button>
+      </Row>
+      <Row>
+        <p className="lead text-center m-2 pb-5">
+          Made in NYC 🍺 by Jeremy, Top, Matt, &amp; Danielle.
+        </p>
       </Row>
     </Container>
   )

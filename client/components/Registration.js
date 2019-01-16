@@ -4,7 +4,6 @@ import {Container} from 'reactstrap'
 import {createOneUser} from '../actions/index'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {AvForm, AvField} from 'availity-reactstrap-validation'
 
 class Registration extends Component {
   constructor() {
@@ -24,14 +23,14 @@ class Registration extends Component {
       billingZip: ''
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleValid = this.handleValid.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
-  handleValid(event, values) {
+  handleSubmit(event, values) {
     event.preventDefault()
     // this.props.logIn({...this.state})
     this.setState({
@@ -72,7 +71,7 @@ class Registration extends Component {
       <RegistrationForm
         {...this.state}
         handleChange={this.handleChange}
-        handleValidSubmit={this.handleValidSubmit}
+        handleSubmit={this.handleSubmit}
       />
     )
   }
