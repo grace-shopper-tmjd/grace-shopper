@@ -19,11 +19,13 @@ export default class About extends Component {
       backgroundImage: `url('https://images.unsplash.com/photo-1518176258769-f227c798150e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1789&q=80')`,
       backgroundSize: '100%',
       height: '100vh',
+      width: '100vw',
       backgroundRepeat: 'no-repeat'
     }
 
     const flexStyle = {
-      height: '90vh'
+      height: '100vh',
+      width: '100vw'
     }
 
     const subTitleStyle = {
@@ -46,10 +48,10 @@ export default class About extends Component {
     return (
       <Jumbotron fluid style={divStyle}>
         <div
-          className="d-flex justify-content-center align-items-center flex-column"
+          className="d-flex justify-content-center flex-column p-5"
           style={flexStyle}
         >
-          <h3 className="lead" style={subTitleStyle}>
+          <h3 className="lead text-center" style={subTitleStyle}>
             We are a group of beer heads that started this online store in 2019.
             After realizing the smaller independent breweries are not getting
             the attention they deserve, we've set out to bring a handful of hand
